@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process
+	xmlns="http://textproc.sing.esei.uvigo.es/ProcessingProcess"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://textproc.sing.esei.uvigo.es/ProcessingProcess TextProcStep/src/main/resources/process_definition.xsd"
+	version="1">
+
+	<!-- Uses NLTK TweetTokenizer -->
+	<step action="TppTokenization">
+		<parameters>
+			<endpoint>http://127.0.0.1:5005/tpp/v1/casual-tokenize</endpoint>
+			<textDocumentWithTitleTableName>submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>comment</textDocumentTableName>
+		</parameters>
+	</step>
+
+	<!-- This step normalizes multiple spaces to a single space, too. It uses NLTK stopword lists -->
+	<step action="TppStopwordFiltering">
+		<parameters>
+			<endpoint>http://127.0.0.1:5005/tpp/v1/remove-stopwords</endpoint>
+			<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>tokenized_comment</textDocumentTableName>
+			<language>english</language>
+		</parameters>
+	</step>
+
+	<!-- This step also removes pronouns and normalizes to lowercase. See: https://spacy.io/api/annotation#lemmatization -->
+	<step action="TppLemmatization">
+		<parameters>
+			<endpoint>http://127.0.0.1:5005/tpp/v1/lemmatize</endpoint>
+			<textDocumentWithTitleTableName>stopword_filtered_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>stopword_filtered_comment</textDocumentTableName>
+			<model>en_core_web_sm</model>
+		</parameters>
+	</step>
+
+	<step action="MentionFiltering">
+		<parameters>
+			<textDocumentWithTitleTableName>lemmatized_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>lemmatized_comment</textDocumentTableName>
+			<mentionType>reddit_all</mentionType>
+		</parameters>
+	</step>
+
+	<!-- Skips empty or Reddit deleted posts from the result table. This removes about 1000 comments -->
+	<step action="EmptyFiltering">
+		<parameters>
+			<textDocumentWithTitleTableName>mention_filtered_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>mention_filtered_comment</textDocumentTableName>
+		</parameters>
+	</step>
+
+	<!-- With BM25 similarity -->
+	<step action="LuceneIndex">
+		<parameters>
+			<textDocumentWithTitleTableName>non_empty_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>non_empty_comment</textDocumentTableName>
+		</parameters>
+	</step>
+</process>

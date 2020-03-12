@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>es.uvigo.esei.sing</groupId>
+		<artifactId>TextProcApplication</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>TextProcMain</artifactId>
+	<name>TextProcMain</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.github.lalyos</groupId>
+			<artifactId>jfiglet</artifactId>
+			<version>0.0.8</version>
+		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>TextProcLogging</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>TextProcPersistence</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>TextProcStep</artifactId>
+		</dependency>
+		<!-- Bundled steps (not really necessary, but ensure some minimum functionality is available) -->
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>TppTokenizationTextProcStep</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>TppStopwordFilteringTextProcStep</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>TppLemmatizationTextProcStep</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>MentionFilteringTextProcStep</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>EmptyFilteringTextProcStep</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>LuceneIndexTextProcStep</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<!-- Avoid java.lang.reflect.InaccessibleObjectException during tests -->
+					<argLine>--add-opens es.uvigo.esei.sing.textproc/es.uvigo.esei.sing.textproc=ALL-UNNAMED</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<outputDirectory>${project.build.directory}/../../dist</outputDirectory>
+					<archive>
+						<manifest>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>es.uvigo.esei.sing.textproc.TextProc</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
