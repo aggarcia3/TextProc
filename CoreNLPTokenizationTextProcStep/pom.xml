@@ -18,51 +18,16 @@
 		<dependency>
 			<groupId>es.uvigo.esei.sing</groupId>
 			<artifactId>TextProcStep</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.glassfish.jaxb</groupId>
+					<artifactId>jaxb-runtime</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
-		    <groupId>edu.stanford.nlp</groupId>
-		    <artifactId>stanford-corenlp</artifactId>
-		    <exclusions>
-		    	<!-- Exclude old Lucene dependencies, because they conflict with other steps -->
-		    	<exclusion>
-		    		<groupId>org.apache.lucene</groupId>
-		    		<artifactId>lucene-queryparser</artifactId>
-		    	</exclusion>
-		    	<exclusion>
-		    		<groupId>org.apache.lucene</groupId>
-		    		<artifactId>lucene-analyzers-common</artifactId>
-		    	</exclusion>
-		    	<exclusion>
-		    		<groupId>org.apache.lucene</groupId>
-		    		<artifactId>lucene-queries</artifactId>
-		    	</exclusion>
-		    	<exclusion>
-		    		<groupId>org.apache.lucene</groupId>
-		    		<artifactId>lucene-core</artifactId>
-		    	</exclusion>
-		    	<!-- Exclude redundant dependencies -->
-		    	<exclusion>
-		    		<groupId>com.sun.xml.bind</groupId>
-		    		<artifactId>jaxb-impl</artifactId>
-		    	</exclusion>
-		    	<exclusion>
-		    		<groupId>org.glassfish</groupId>
-		    		<artifactId>javax.json</artifactId>
-		    	</exclusion>
-		    	<exclusion>
-		    		<groupId>xml-apis</groupId>
-		    		<artifactId>xml-apis</artifactId>
-		    	</exclusion>
-		    	<!-- Exclude old and ugly dependency that doesn't work with Jigsaw -->
-		    	<exclusion>
-		    		<groupId>xalan</groupId>
-		    		<artifactId>xalan</artifactId>
-		    	</exclusion>
-		    	<exclusion>
-		    		<groupId>xerces</groupId>
-		    		<artifactId>xercesImpl</artifactId>
-		    	</exclusion>
-		    </exclusions>
+			<groupId>edu.stanford.nlp</groupId>
+			<artifactId>stanford-corenlp</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -364,3 +364,6 @@ dist/
 
 # Database corpus
 corpus.db
+
+# Default Lucene index output directory
+lucene_index/

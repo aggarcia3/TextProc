@@ -172,15 +172,60 @@
 				<version>8.4.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
-			    <groupId>edu.stanford.nlp</groupId>
-			    <artifactId>stanford-corenlp</artifactId>
-			    <version>3.9.2</version>
+				<groupId>edu.stanford.nlp</groupId>
+				<artifactId>stanford-corenlp</artifactId>
+				<version>3.9.2</version>
+				<exclusions>
+					<!-- Exclude old Lucene dependencies, because they conflict with others -->
+					<exclusion>
+						<groupId>org.apache.lucene</groupId>
+						<artifactId>lucene-queryparser</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.lucene</groupId>
+						<artifactId>lucene-analyzers-common</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.lucene</groupId>
+						<artifactId>lucene-queries</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.lucene</groupId>
+						<artifactId>lucene-core</artifactId>
+					</exclusion>
+					<!-- Exclude redundant dependencies -->
+					<exclusion>
+						<groupId>org.glassfish</groupId>
+						<artifactId>javax.json</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+					<!-- Exclude old and ugly dependency that doesn't work with Jigsaw -->
+					<exclusion>
+						<groupId>xalan</groupId>
+						<artifactId>xalan</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>xerces</groupId>
+						<artifactId>xercesImpl</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.sun.xml.bind</groupId>
+						<artifactId>jaxb-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.sun.xml.bind</groupId>
+						<artifactId>jaxb-impl</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
-			    <groupId>edu.stanford.nlp</groupId>
-			    <artifactId>stanford-corenlp</artifactId>
-			    <version>3.9.2</version>
-			    <classifier>models</classifier>
+				<groupId>edu.stanford.nlp</groupId>
+				<artifactId>stanford-corenlp</artifactId>
+				<version>3.9.2</version>
+				<classifier>models</classifier>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -11,6 +11,9 @@ module es.uvigo.esei.sing.textproc.step.corenlptokenization {
 	requires java.persistence;
 	requires stanford.corenlp;
 
+	// JAXB needs deep reflection access
+	opens es.uvigo.esei.sing.textproc.step.corenlptokenization.xml.definition;
+
 	// Entities are opened to deep reflection for JPA
 	opens es.uvigo.esei.sing.textproc.step.corenlptokenization.entity;
 
