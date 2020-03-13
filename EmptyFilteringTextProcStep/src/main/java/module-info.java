@@ -16,5 +16,5 @@ module es.uvigo.esei.sing.textproc.step.emptyfiltering {
 	opens es.uvigo.esei.sing.textproc.step.emptyfiltering.entity;
 
 	provides es.uvigo.esei.sing.textproc.step.ProcessingStepService
-		with es.uvigo.esei.sing.textproc.step.emptyfiltering.EmptyFilteringTextProcStepService;
+		with es.uvigo.esei.sing.textproc.step.emptyfiltering.EmptyFilteringProcessingStepService;
 }

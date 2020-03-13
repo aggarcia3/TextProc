@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 @XmlSchema(
-	namespace = "http://textproc.sing.esei.uvigo.es/ProcessingProcess",
+	namespace = "http://textproc.sing.esei.uvigo.es/ProcessingProcess/TppLemmatization",
 	location = "", // Location TBD by parser
 	elementFormDefault = XmlNsForm.QUALIFIED
 )

@@ -17,5 +17,5 @@ module es.uvigo.esei.sing.textproc.step.luceneindex {
 	opens es.uvigo.esei.sing.textproc.step.luceneindex.xml.definition;
 
 	provides es.uvigo.esei.sing.textproc.step.ProcessingStepService
-		with es.uvigo.esei.sing.textproc.step.luceneindex.LuceneIndexTextProcStepService;
+		with es.uvigo.esei.sing.textproc.step.luceneindex.LuceneIndexProcessingStepService;
 }

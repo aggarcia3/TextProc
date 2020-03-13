@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>TextProcApplication</artifactId>
+		<groupId>es.uvigo.esei.sing</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>CoreNLPTokenizationTextProcStep</artifactId>
+
+	<name>CoreNLPTokenizationTextProcStep</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>TextProcStep</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>edu.stanford.nlp</groupId>
+		    <artifactId>stanford-corenlp</artifactId>
+		    <exclusions>
+		    	<!-- Exclude old Lucene dependencies, because they conflict with other steps -->
+		    	<exclusion>
+		    		<groupId>org.apache.lucene</groupId>
+		    		<artifactId>lucene-queryparser</artifactId>
+		    	</exclusion>
+		    	<exclusion>
+		    		<groupId>org.apache.lucene</groupId>
+		    		<artifactId>lucene-analyzers-common</artifactId>
+		    	</exclusion>
+		    	<exclusion>
+		    		<groupId>org.apache.lucene</groupId>
+		    		<artifactId>lucene-queries</artifactId>
+		    	</exclusion>
+		    	<exclusion>
+		    		<groupId>org.apache.lucene</groupId>
+		    		<artifactId>lucene-core</artifactId>
+		    	</exclusion>
+		    	<!-- Exclude redundant dependencies -->
+		    	<exclusion>
+		    		<groupId>com.sun.xml.bind</groupId>
+		    		<artifactId>jaxb-impl</artifactId>
+		    	</exclusion>
+		    	<exclusion>
+		    		<groupId>org.glassfish</groupId>
+		    		<artifactId>javax.json</artifactId>
+		    	</exclusion>
+		    	<exclusion>
+		    		<groupId>xml-apis</groupId>
+		    		<artifactId>xml-apis</artifactId>
+		    	</exclusion>
+		    	<!-- Exclude old and ugly dependency that doesn't work with Jigsaw -->
+		    	<exclusion>
+		    		<groupId>xalan</groupId>
+		    		<artifactId>xalan</artifactId>
+		    	</exclusion>
+		    	<exclusion>
+		    		<groupId>xerces</groupId>
+		    		<artifactId>xercesImpl</artifactId>
+		    	</exclusion>
+		    </exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-dependency-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<!-- Avoid java.lang.reflect.InaccessibleObjectException during tests -->
+					<argLine>--add-opens es.uvigo.esei.sing.textproc.step.corenlptokenization/es.uvigo.esei.sing.textproc.step.corenlptokenization=ALL-UNNAMED</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<outputDirectory>${project.build.directory}/../../dist/lib</outputDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

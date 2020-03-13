@@ -13,5 +13,5 @@ module es.uvigo.esei.sing.textproc.step.tpptokenization {
 	opens es.uvigo.esei.sing.textproc.step.tpptokenization.entity;
 
 	provides es.uvigo.esei.sing.textproc.step.ProcessingStepService
-		with es.uvigo.esei.sing.textproc.step.tpptokenization.TppTokenizationTextProcStepService;
+		with es.uvigo.esei.sing.textproc.step.tpptokenization.TppTokenizationProcessingStepService;
 }

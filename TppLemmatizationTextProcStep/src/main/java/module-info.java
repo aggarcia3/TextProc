@@ -19,5 +19,5 @@ module es.uvigo.esei.sing.textproc.step.tpplemmatization {
 	opens es.uvigo.esei.sing.textproc.step.tpplemmatization.entity;
 
 	provides es.uvigo.esei.sing.textproc.step.ProcessingStepService
-		with es.uvigo.esei.sing.textproc.step.tpplemmatization.TppLemmatizationTextProcStepService;
+		with es.uvigo.esei.sing.textproc.step.tpplemmatization.TppLemmatizationProcessingStepService;
 }

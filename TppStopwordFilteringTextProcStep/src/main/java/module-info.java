@@ -18,5 +18,5 @@ module es.uvigo.esei.sing.textproc.step.tppstopwordfiltering {
 	opens es.uvigo.esei.sing.textproc.step.tppstopwordfiltering.entity;
 
 	provides es.uvigo.esei.sing.textproc.step.ProcessingStepService
-		with es.uvigo.esei.sing.textproc.step.tppstopwordfiltering.TppStopwordFilteringTextProcStepService;
+		with es.uvigo.esei.sing.textproc.step.tppstopwordfiltering.TppStopwordFilteringProcessingStepService;
 }

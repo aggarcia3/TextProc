@@ -170,7 +170,7 @@ public final class TextProc {
 			"Copyright (C) 2020\n" + 
 			"This program comes with ABSOLUTELY NO WARRANTY.\n" + 
 			"This is free software, and you are welcome to redistribute it\n" + 
-			"under certain conditions. See LICENSE.md for details."
+			"under certain conditions. See LICENSE for details."
 		);
 		System.out.println();
 	}

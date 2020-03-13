@@ -2,35 +2,49 @@
 <process
 	xmlns="http://textproc.sing.esei.uvigo.es/ProcessingProcess"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tpp="http://textproc.sing.esei.uvigo.es/ProcessingProcess/TppStepParameter"
+	xmlns:cnlp="http://textproc.sing.esei.uvigo.es/ProcessingProcess/CoreNLPTokenizationStepParameter"
+	xmlns:tppsf="http://textproc.sing.esei.uvigo.es/ProcessingProcess/TppStopwordFiltering"
+	xmlns:tppl="http://textproc.sing.esei.uvigo.es/ProcessingProcess/TppLemmatization"
+	xmlns:mf="http://textproc.sing.esei.uvigo.es/ProcessingProcess/MentionFiltering"
+	xmlns:ef="http://textproc.sing.esei.uvigo.es/ProcessingProcess/EmptyFiltering"
+	xmlns:li="http://textproc.sing.esei.uvigo.es/ProcessingProcess/LuceneIndex"
 	xsi:schemaLocation="http://textproc.sing.esei.uvigo.es/ProcessingProcess TextProcStep/src/main/resources/process_definition.xsd"
 	version="1">
 
 	<!-- Uses NLTK TweetTokenizer -->
-	<step action="TppTokenization">
+	<!--<step action="TppTokenization">
 		<parameters>
-			<endpoint>http://127.0.0.1:5005/tpp/v1/casual-tokenize</endpoint>
+			<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/casual-tokenize</tpp:endpoint>
 			<textDocumentWithTitleTableName>submission</textDocumentWithTitleTableName>
 			<textDocumentTableName>comment</textDocumentTableName>
+		</parameters>
+	</step>-->
+	<step action="CoreNLPTokenization">
+		<parameters>
+			<textDocumentWithTitleTableName>submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>comment</textDocumentTableName>
+			<cnlp:language>en</cnlp:language>
 		</parameters>
 	</step>
 
 	<!-- This step normalizes multiple spaces to a single space, too. It uses NLTK stopword lists -->
 	<step action="TppStopwordFiltering">
 		<parameters>
-			<endpoint>http://127.0.0.1:5005/tpp/v1/remove-stopwords</endpoint>
+			<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/remove-stopwords</tpp:endpoint>
 			<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
 			<textDocumentTableName>tokenized_comment</textDocumentTableName>
-			<language>english</language>
+			<tppsf:language>english</tppsf:language>
 		</parameters>
 	</step>
 
 	<!-- This step also removes pronouns and normalizes to lowercase. See: https://spacy.io/api/annotation#lemmatization -->
 	<step action="TppLemmatization">
 		<parameters>
-			<endpoint>http://127.0.0.1:5005/tpp/v1/lemmatize</endpoint>
+			<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/lemmatize</tpp:endpoint>
 			<textDocumentWithTitleTableName>stopword_filtered_submission</textDocumentWithTitleTableName>
 			<textDocumentTableName>stopword_filtered_comment</textDocumentTableName>
-			<model>en_core_web_sm</model>
+			<tppl:model>en_core_web_sm</tppl:model>
 		</parameters>
 	</step>
 
@@ -38,7 +52,7 @@
 		<parameters>
 			<textDocumentWithTitleTableName>lemmatized_submission</textDocumentWithTitleTableName>
 			<textDocumentTableName>lemmatized_comment</textDocumentTableName>
-			<mentionType>reddit_all</mentionType>
+			<mf:mentionType>reddit_all</mf:mentionType>
 		</parameters>
 	</step>
 

@@ -18,5 +18,5 @@ module es.uvigo.esei.sing.textproc.step.mentionfiltering {
 	opens es.uvigo.esei.sing.textproc.step.mentionfiltering.entity;
 
 	provides es.uvigo.esei.sing.textproc.step.ProcessingStepService
-		with es.uvigo.esei.sing.textproc.step.mentionfiltering.MentionFilteringTextProcStepService;
+		with es.uvigo.esei.sing.textproc.step.mentionfiltering.MentionFilteringProcessingStepService;
 }

@@ -38,6 +38,10 @@
 		</dependency>
 		<dependency>
 			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>CoreNLPTokenizationTextProcStep</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
 			<artifactId>TppStopwordFilteringTextProcStep</artifactId>
 		</dependency>
 		<dependency>
