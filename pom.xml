@@ -48,7 +48,9 @@
 		<module>EmptyFilteringTextProcStep</module>
 		<module>LuceneIndexTextProcStep</module>
 
+		<!-- Modified third party libraries -->
 		<module>lucene-shaded</module>
+		<module>sqlite-dialect-custom</module>
 	</modules>
 
 	<properties>
@@ -87,8 +89,8 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.gwenn</groupId>
-				<artifactId>sqlite-dialect</artifactId>
-				<version>0.1.0-FORK</version>
+				<artifactId>sqlite-dialect-custom</artifactId>
+				<version>0.1.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.projectlombok</groupId>
