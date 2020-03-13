@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 package es.uvigo.esei.sing.textproc.step.tpplemmatization;
 
 import java.util.List;
@@ -12,8 +14,8 @@ import es.uvigo.esei.sing.textproc.abstracttppstep.AbstractTppProcessingStep;
 import es.uvigo.esei.sing.textproc.abstracttppstep.JsonResponseAttributeType;
 import es.uvigo.esei.sing.textproc.abstracttppstep.ProcessingBiConsumer;
 import es.uvigo.esei.sing.textproc.step.ProcessingException;
-import es.uvigo.esei.sing.textproc.step.tpplemmatization.entity.LemmatizedTextDocument;
-import es.uvigo.esei.sing.textproc.step.tpplemmatization.entity.LemmatizedTextWithTitleDocument;
+import es.uvigo.esei.sing.textproc.step.tpplemmatization.entity.TppLemmatizedTextDocument;
+import es.uvigo.esei.sing.textproc.step.tpplemmatization.entity.TppLemmatizedTextWithTitleDocument;
 import es.uvigo.esei.sing.textproc.step.tpplemmatization.xml.definition.ModelProcessingStepParameter;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -45,7 +47,7 @@ final class TppLemmatizationProcessingStep extends AbstractTppProcessingStep {
 			// Additional mandatory parameters
 			Set.of(MODEL_PROCESSING_STEP_PARAMETER_NAME),
 			// Result entity types
-			List.of(LemmatizedTextWithTitleDocument.class, LemmatizedTextDocument.class),
+			List.of(TppLemmatizedTextWithTitleDocument.class, TppLemmatizedTextDocument.class),
 			// Step description format string
 			"Lemmatizing %s",
 			// JSON response attribute type

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-package es.uvigo.esei.sing.textproc.step.corenlptokenization;
+package es.uvigo.esei.sing.textproc.step.corenlplemmatization;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,59 +10,69 @@ import java.util.Set;
 
 import javax.persistence.PersistenceException;
 
-import edu.stanford.nlp.ling.CoreAnnotations.TextAnnotation;
+import edu.stanford.nlp.ling.CoreAnnotations.LemmaAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations.TokensAnnotation;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.AnnotationPipeline;
+import edu.stanford.nlp.pipeline.MorphaAnnotator;
+import edu.stanford.nlp.pipeline.POSTaggerAnnotator;
 import edu.stanford.nlp.pipeline.TokenizerAnnotator;
+import edu.stanford.nlp.pipeline.TokenizerAnnotator.TokenizerType;
+import edu.stanford.nlp.pipeline.WordsToSentencesAnnotator;
+import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 import es.uvigo.esei.sing.textproc.entity.ProcessedDocument;
 import es.uvigo.esei.sing.textproc.step.AbstractProcessingStep;
 import es.uvigo.esei.sing.textproc.step.ProcessingException;
-import es.uvigo.esei.sing.textproc.step.corenlptokenization.entity.CoreNLPTokenizedTextDocument;
-import es.uvigo.esei.sing.textproc.step.corenlptokenization.entity.CoreNLPTokenizedTextWithTitleDocument;
-import es.uvigo.esei.sing.textproc.step.corenlptokenization.xml.definition.LanguageProcessingStepParameter;
-import es.uvigo.esei.sing.textproc.step.corenlptokenization.xml.definition.TokenizerOptionsProcessingStepParameter;
+import es.uvigo.esei.sing.textproc.step.corenlplemmatization.entity.CoreNLPLemmatizedTextDocument;
+import es.uvigo.esei.sing.textproc.step.corenlplemmatization.entity.CoreNLPLemmatizedTextWithTitleDocument;
+import es.uvigo.esei.sing.textproc.step.corenlplemmatization.xml.definition.ModelProcessingStepParameter;
 
 /**
- * Tokenizes documents, according to the provided parameters, using Stanford
- * CoreNLP.
+ * Lemmatizes tokens of documents, according to the provided parameters, using
+ * Stanford CoreNLP.
  *
  * @author Alejandro González García
  */
-final class CoreNLPTokenizationProcessingStep extends AbstractProcessingStep {
-	private static final String LANGUAGE_PROCESSING_STEP_PARAMETER_NAME = new LanguageProcessingStepParameter().getName();
-	private static final String TOKENIZER_OPTIONS_PROCESSING_STEP_PARAMETER_NAME = new TokenizerOptionsProcessingStepParameter().getName();
+final class CoreNLPLemmatizationProcessingStep extends AbstractProcessingStep {
+	private static final String MODEL_PROCESSING_STEP_PARAMETER_NAME = new ModelProcessingStepParameter().getName();
 
 	/**
-	 * Instantiates a Stanford CoreNLP tokenization processing step.
+	 * Instantiates a Stanford CoreNLP lemmatization processing step.
 	 */
-	CoreNLPTokenizationProcessingStep() {
+	CoreNLPLemmatizationProcessingStep() {
 		super(
 			// Additional mandatory and optional parameters, with their validation function
-			Map.of(
-				LANGUAGE_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.trim().isEmpty(),
-				TOKENIZER_OPTIONS_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.trim().isEmpty()
-			),
+			Map.of(MODEL_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.trim().isEmpty()),
 			// Additional mandatory parameters
-			Set.of(LANGUAGE_PROCESSING_STEP_PARAMETER_NAME)
+			Set.of()
 		);
 	}
 
 	@Override
 	protected void run() throws ProcessingException {
 		final List<Class<? extends ProcessedDocument>> processedDocumentTypes = List.of(
-			CoreNLPTokenizedTextWithTitleDocument.class, CoreNLPTokenizedTextDocument.class
+			CoreNLPLemmatizedTextWithTitleDocument.class, CoreNLPLemmatizedTextDocument.class
 		);
 
 		final AnnotationPipeline nlpPipeline = new AnnotationPipeline();
+		// We assume the input is already tokenized, so we use a cheap whitespace tokenizer
+		nlpPipeline.addAnnotator(new TokenizerAnnotator(false, TokenizerType.Whitespace));
+		// This annotator is required by MorphaAnnotator
+		nlpPipeline.addAnnotator(new WordsToSentencesAnnotator(false));
+		// POS tags are required by lemmatization
 		nlpPipeline.addAnnotator(
-			new TokenizerAnnotator(
-				false,
-				getParameters().get(LANGUAGE_PROCESSING_STEP_PARAMETER_NAME),
-				getParameters().getOrDefault(TOKENIZER_OPTIONS_PROCESSING_STEP_PARAMETER_NAME, "asciiQuotes=true")
+			new POSTaggerAnnotator(
+				new MaxentTagger(
+					getParameters().getOrDefault(
+						MODEL_PROCESSING_STEP_PARAMETER_NAME,
+						// Mirror of a model included with the CoreNLP 3.9.2 distribution
+						"https://github.com/aggarcia3/corenlp-models/raw/3.9.2/english-left3words-distsim.tagger"
+					)
+				)
 			)
 		);
+		nlpPipeline.addAnnotator(new MorphaAnnotator(false));
 
 		try {
 			// Delete previous results
@@ -76,7 +86,7 @@ final class CoreNLPTokenizationProcessingStep extends AbstractProcessingStep {
 
 				forEachDocumentInNativeQuery(
 					unprocessedDocumentsQuerySuppliers.get(i),
-					String.format("Tokenizing %s", unprocessedDocumentTypesNames.get(i)),
+					String.format("Lemmatizing %s", unprocessedDocumentTypesNames.get(i)),
 					numberOfUnprocessedEntitiesProviders.get(i).get(),
 					(final List<String[]> batchAttributes) -> {
 						final Map<String, String> processedAttributesMap = new HashMap<>(
@@ -91,7 +101,7 @@ final class CoreNLPTokenizationProcessingStep extends AbstractProcessingStep {
 								nlpPipeline.annotate(annotatedAttribute);
 								for (final CoreLabel token : annotatedAttribute.get(TokensAnnotation.class)) {
 									tokenizedAttribute
-										.append(token.get(TextAnnotation.class))
+										.append(token.get(LemmaAnnotation.class))
 										.append(' ');
 								}
 

@@ -8,8 +8,9 @@
  */
 module es.uvigo.esei.sing.textproc.step.corenlptokenization {
 	requires es.uvigo.esei.sing.textproc.step;
-	requires java.persistence;
+
 	requires stanford.corenlp;
+	requires java.persistence;
 
 	// JAXB needs deep reflection access
 	opens es.uvigo.esei.sing.textproc.step.corenlptokenization.xml.definition;

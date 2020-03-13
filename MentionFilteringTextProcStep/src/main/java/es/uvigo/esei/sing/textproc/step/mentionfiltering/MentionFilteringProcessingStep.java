@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 package es.uvigo.esei.sing.textproc.step.mentionfiltering;
 
 import java.util.Collections;

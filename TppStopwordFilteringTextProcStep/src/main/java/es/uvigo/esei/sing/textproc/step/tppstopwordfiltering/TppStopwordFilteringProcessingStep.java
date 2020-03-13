@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 package es.uvigo.esei.sing.textproc.step.tppstopwordfiltering;
 
 import java.util.List;

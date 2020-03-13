@@ -10,9 +10,9 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>CoreNLPTokenizationTextProcStep</artifactId>
+	<artifactId>CoreNLPLemmatizationTextProcStep</artifactId>
 
-	<name>CoreNLPTokenizationTextProcStep</name>
+	<name>CoreNLPLemmatizationTextProcStep</name>
 
 	<dependencies>
 		<dependency>
@@ -37,7 +37,7 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<!-- Avoid java.lang.reflect.InaccessibleObjectException during tests -->
-					<argLine>--add-opens es.uvigo.esei.sing.textproc.step.corenlptokenization/es.uvigo.esei.sing.textproc.step.corenlptokenization=ALL-UNNAMED</argLine>
+					<argLine>--add-opens es.uvigo.esei.sing.textproc.step.corenlplemmatization/es.uvigo.esei.sing.textproc.step.corenlplemmatization=ALL-UNNAMED</argLine>
 				</configuration>
 			</plugin>
 			<plugin>

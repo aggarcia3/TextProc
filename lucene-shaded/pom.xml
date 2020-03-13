@@ -38,12 +38,9 @@
 				<configuration>
 					<createDependencyReducedPom>false</createDependencyReducedPom>
 					<shadeSourcesContent>true</shadeSourcesContent>
-					<!-- Exclude dependencies inherited from parent POM -->
+					<!-- Try to not include transitive dependencies -->
 					<artifactSet>
-						<excludes>
-							<exclude>org.projectlombok:lombok:*:*</exclude>
-							<exclude>org.mapstruct:mapstruct-processor:*:*</exclude>
-						</excludes>
+						<includes>org.apache.lucene:*</includes>
 					</artifactSet>
 					<transformers>
 						<transformer

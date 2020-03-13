@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-package es.uvigo.esei.sing.textproc.step.tpplemmatization.entity;
+package es.uvigo.esei.sing.textproc.step.corenlplemmatization.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -15,7 +15,7 @@ import es.uvigo.esei.sing.textproc.entity.ProcessedDocumentWithTitle;
  */
 @Entity
 @Table(name = "lemmatized_text_with_title_document")
-public class LemmatizedTextWithTitleDocument extends ProcessedDocumentWithTitle {
+public class CoreNLPLemmatizedTextWithTitleDocument extends ProcessedDocumentWithTitle {
 	/**
 	 * Creates a new lemmatized text document which has a title with the given
 	 * parameters.
@@ -26,7 +26,7 @@ public class LemmatizedTextWithTitleDocument extends ProcessedDocumentWithTitle 
 	 * @param title The lemmatized title of the text document.
 	 * @throws IllegalArgumentException If any argument is {@code null}.
 	 */
-	public LemmatizedTextWithTitleDocument(final int id, final String text, final String title) {
+	public CoreNLPLemmatizedTextWithTitleDocument(final int id, final String text, final String title) {
 		super(id, text, title);
 	}
 
@@ -37,12 +37,12 @@ public class LemmatizedTextWithTitleDocument extends ProcessedDocumentWithTitle 
 	 * @param id The primary key of the entity.
 	 * @throws IllegalArgumentException If {@code id} is {@code null}.
 	 */
-	public LemmatizedTextWithTitleDocument(final Integer id) {
+	public CoreNLPLemmatizedTextWithTitleDocument(final Integer id) {
 		super(id);
 	}
 
 	/**
 	 * Dummy default constructor, to be used by JPA only.
 	 */
-	protected LemmatizedTextWithTitleDocument() {}
+	protected CoreNLPLemmatizedTextWithTitleDocument() {}
 }

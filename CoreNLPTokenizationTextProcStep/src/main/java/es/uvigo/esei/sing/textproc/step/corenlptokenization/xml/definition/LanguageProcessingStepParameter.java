@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import es.uvigo.esei.sing.textproc.step.xml.definition.AbstractProcessingStepParameter;
 
 /**
- * Parameter for specifying a language.
+ * Parameter for specifying a language code.
  *
  * @author Alejandro González García
  */

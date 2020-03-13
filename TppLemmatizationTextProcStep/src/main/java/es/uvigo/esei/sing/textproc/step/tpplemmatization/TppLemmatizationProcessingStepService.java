@@ -8,8 +8,8 @@ import es.uvigo.esei.sing.textproc.abstracttppstep.AbstractTppProcessingStepServ
 import es.uvigo.esei.sing.textproc.entity.ProcessedDocument;
 import es.uvigo.esei.sing.textproc.step.AbstractProcessingStep;
 import es.uvigo.esei.sing.textproc.step.tpplemmatization.TppLemmatizationProcessingStep.AddModelParameterAction;
-import es.uvigo.esei.sing.textproc.step.tpplemmatization.entity.LemmatizedTextDocument;
-import es.uvigo.esei.sing.textproc.step.tpplemmatization.entity.LemmatizedTextWithTitleDocument;
+import es.uvigo.esei.sing.textproc.step.tpplemmatization.entity.TppLemmatizedTextDocument;
+import es.uvigo.esei.sing.textproc.step.tpplemmatization.entity.TppLemmatizedTextWithTitleDocument;
 import es.uvigo.esei.sing.textproc.step.tpplemmatization.xml.definition.ModelProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.xml.definition.AbstractProcessingStepParameter;
 
@@ -36,7 +36,7 @@ public final class TppLemmatizationProcessingStepService extends AbstractTppProc
 
 	@Override
 	public Set<Class<? extends ProcessedDocument>> getProcessedDocumentTypes() {
-		return Set.of(LemmatizedTextDocument.class, LemmatizedTextWithTitleDocument.class);
+		return Set.of(TppLemmatizedTextDocument.class, TppLemmatizedTextWithTitleDocument.class);
 	}
 
 	@Override

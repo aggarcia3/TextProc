@@ -14,7 +14,7 @@ import es.uvigo.esei.sing.textproc.entity.ProcessedDocument;
  */
 @Entity
 @Table(name = "lemmatized_text_document")
-public class LemmatizedTextDocument extends ProcessedDocument {
+public class TppLemmatizedTextDocument extends ProcessedDocument {
 	/**
 	 * Creates a new lemmatized text-only document with the given parameters.
 	 *
@@ -24,7 +24,7 @@ public class LemmatizedTextDocument extends ProcessedDocument {
 	 *             separated by spaces.
 	 * @throws IllegalArgumentException If any argument is {@code null}.
 	 */
-	public LemmatizedTextDocument(final int id, final String text) {
+	public TppLemmatizedTextDocument(final int id, final String text) {
 		super(id, text);
 	}
 
@@ -35,12 +35,12 @@ public class LemmatizedTextDocument extends ProcessedDocument {
 	 * @param id The primary key of the entity.
 	 * @throws IllegalArgumentException If {@code id} is {@code null}.
 	 */
-	public LemmatizedTextDocument(final Integer id) {
+	public TppLemmatizedTextDocument(final Integer id) {
 		super(id, "");
 	}
 
 	/**
 	 * Dummy default constructor, to be used by JPA only.
 	 */
-	protected LemmatizedTextDocument() {}
+	protected TppLemmatizedTextDocument() {}
 }

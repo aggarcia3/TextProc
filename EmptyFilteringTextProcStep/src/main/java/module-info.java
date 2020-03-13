@@ -9,6 +9,8 @@
 module es.uvigo.esei.sing.textproc.step.emptyfiltering {
 	requires es.uvigo.esei.sing.textproc.step;
 
+	requires java.persistence;
+
 	// JAXB needs deep reflection access
 	opens es.uvigo.esei.sing.textproc.step.emptyfiltering.xml.definition;
 

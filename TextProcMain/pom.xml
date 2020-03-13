@@ -50,6 +50,10 @@
 		</dependency>
 		<dependency>
 			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>CoreNLPLemmatizationTextProcStep</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
 			<artifactId>MentionFilteringTextProcStep</artifactId>
 		</dependency>
 		<dependency>

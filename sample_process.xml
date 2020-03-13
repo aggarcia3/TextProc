@@ -3,7 +3,8 @@
 	xmlns="http://textproc.sing.esei.uvigo.es/ProcessingProcess"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tpp="http://textproc.sing.esei.uvigo.es/ProcessingProcess/TppStepParameter"
-	xmlns:cnlp="http://textproc.sing.esei.uvigo.es/ProcessingProcess/CoreNLPTokenizationStepParameter"
+	xmlns:cnlpt="http://textproc.sing.esei.uvigo.es/ProcessingProcess/CoreNLPTokenizationStepParameter"
+	xmlns:cnlpl="http://textproc.sing.esei.uvigo.es/ProcessingProcess/CoreNLPLemmatizationStepParameter"
 	xmlns:tppsf="http://textproc.sing.esei.uvigo.es/ProcessingProcess/TppStopwordFiltering"
 	xmlns:tppl="http://textproc.sing.esei.uvigo.es/ProcessingProcess/TppLemmatization"
 	xmlns:mf="http://textproc.sing.esei.uvigo.es/ProcessingProcess/MentionFiltering"
@@ -24,7 +25,7 @@
 		<parameters>
 			<textDocumentWithTitleTableName>submission</textDocumentWithTitleTableName>
 			<textDocumentTableName>comment</textDocumentTableName>
-			<cnlp:language>en</cnlp:language>
+			<cnlpt:language>en</cnlpt:language>
 		</parameters>
 	</step>
 
@@ -39,12 +40,19 @@
 	</step>
 
 	<!-- This step also removes pronouns and normalizes to lowercase. See: https://spacy.io/api/annotation#lemmatization -->
-	<step action="TppLemmatization">
+	<!--<step action="TppLemmatization">
 		<parameters>
 			<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/lemmatize</tpp:endpoint>
-			<textDocumentWithTitleTableName>stopword_filtered_submission</textDocumentWithTitleTableName>
-			<textDocumentTableName>stopword_filtered_comment</textDocumentTableName>
+			<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>tokenized_comment</textDocumentTableName>
 			<tppl:model>en_core_web_sm</tppl:model>
+		</parameters>
+	</step>-->
+	<!-- This step also normalizes to lowercase. See: https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/process/Morphology.html -->
+	<step action="CoreNLPLemmatization">
+		<parameters>
+			<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>tokenized_comment</textDocumentTableName>
 		</parameters>
 	</step>
 
