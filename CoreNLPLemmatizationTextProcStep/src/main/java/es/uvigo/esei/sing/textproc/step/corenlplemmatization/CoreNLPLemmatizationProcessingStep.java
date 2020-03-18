@@ -67,7 +67,7 @@ final class CoreNLPLemmatizationProcessingStep extends AbstractProcessingStep {
 					getParameters().getOrDefault(
 						MODEL_PROCESSING_STEP_PARAMETER_NAME,
 						// Mirror of a model included with the CoreNLP 3.9.2 distribution
-						"https://github.com/aggarcia3/corenlp-models/raw/3.9.2/english-left3words-distsim.tagger"
+						"https://github.com/aggarcia3/corenlp-models/raw/master/english-left3words-distsim.tagger"
 					)
 				)
 			)
