@@ -367,3 +367,6 @@ corpus.db
 
 # Default Lucene index output directory
 lucene_index/
+
+# Default entity extraction result directory
+entityextraction/

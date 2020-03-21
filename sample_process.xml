@@ -14,12 +14,79 @@
 	xsi:schemaLocation="http://textproc.sing.esei.uvigo.es/ProcessingProcess TextProcStep/src/main/resources/process_definition.xsd"
 	version="1">
 
+	<!-- Uses NLTK TweetTokenizer -->
+	<!--<step action="TppTokenization">
+		<parameters>
+			<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/casual-tokenize</tpp:endpoint>
+			<textDocumentWithTitleTableName>submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>comment</textDocumentTableName>
+		</parameters>
+	</step>-->
+	<step action="CoreNLPTokenization">
+		<parameters>
+			<textDocumentWithTitleTableName>submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>comment</textDocumentTableName>
+			<cnlpt:language>en</cnlpt:language>
+		</parameters>
+	</step>
+
+	<!-- This step normalizes multiple spaces to a single space, too. It uses NLTK stopword lists -->
+	<step action="TppStopwordFiltering">
+		<parameters>
+			<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/remove-stopwords</tpp:endpoint>
+			<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>tokenized_comment</textDocumentTableName>
+			<tppsf:language>english</tppsf:language>
+		</parameters>
+	</step>
+
+	<!-- This step also removes pronouns and normalizes to lowercase. See: https://spacy.io/api/annotation#lemmatization -->
+	<!--<step action="TppLemmatization">
+		<parameters>
+			<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/lemmatize</tpp:endpoint>
+			<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>tokenized_comment</textDocumentTableName>
+			<tppl:model>en_core_web_sm</tppl:model>
+		</parameters>
+	</step>-->
+	<!-- This step also normalizes to lowercase. See: https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/process/Morphology.html -->
+	<step action="CoreNLPLemmatization">
+		<parameters>
+			<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>tokenized_comment</textDocumentTableName>
+		</parameters>
+	</step>
+
+	<step action="MentionFiltering">
+		<parameters>
+			<textDocumentWithTitleTableName>lemmatized_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>lemmatized_comment</textDocumentTableName>
+			<mf:mentionType>reddit_all</mf:mentionType>
+		</parameters>
+	</step>
+
+	<!-- Skips empty or Reddit deleted posts from the result table. This removes about 1000 comments -->
+	<step action="EmptyFiltering">
+		<parameters>
+			<textDocumentWithTitleTableName>mention_filtered_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>mention_filtered_comment</textDocumentTableName>
+		</parameters>
+	</step>
+
+	<!-- With BM25 similarity -->
+	<step action="LuceneIndex">
+		<parameters>
+			<textDocumentWithTitleTableName>non_empty_submission</textDocumentWithTitleTableName>
+			<textDocumentTableName>non_empty_comment</textDocumentTableName>
+		</parameters>
+	</step>
+
 	<step action="CoreNLPEntityExtraction">
 		<parameters>
 			<textDocumentWithTitleTableName>non_empty_submission</textDocumentWithTitleTableName>
 			<textDocumentTableName>non_empty_comment</textDocumentTableName>
-			<cnlpee:seedWordsFilesDirectory>/home/alejandro/Documentos/Estudios/TFG/Diccionarios</cnlpee:seedWordsFilesDirectory>
-			<cnlpee:nerMappingsFile>/home/alejandro/resultado.tsv</cnlpee:nerMappingsFile>
+			<cnlpee:seedWordsFilesDirectory>entityextraction/dictionaries</cnlpee:seedWordsFilesDirectory>
+			<cnlpee:nerMappingsFile>entityextraction/entities.tsv</cnlpee:nerMappingsFile>
 			<cnlpee:overwritableNerCategories>CAUSE_OF_DEATH</cnlpee:overwritableNerCategories>
 		</parameters>
 	</step>
