@@ -12,18 +12,18 @@
 
 	<artifactId>lucene-shaded</artifactId>
 	<name>Apache Lucene (uber JAR)</name>
-	<version>8.4.1-SNAPSHOT</version>
+	<version>8.5.0-SNAPSHOT</version>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-core</artifactId>
-			<version>8.4.1</version>
+			<version>8.5.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-analyzers-common</artifactId>
-			<version>8.4.1</version>
+			<version>8.5.0</version>
 		</dependency>
 	</dependencies>
 
