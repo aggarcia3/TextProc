@@ -5,26 +5,26 @@
 BEGIN TRANSACTION;
 
 -- DROP objects created by this script
-DROP VIEW tokenized_submission;
-DROP VIEW tokenized_comment;
-DROP VIEW stopword_filtered_submission;
-DROP VIEW stopword_filtered_comment;
-DROP VIEW lemmatized_submission;
-DROP VIEW lemmatized_comment;
-DROP VIEW mention_filtered_submission;
-DROP VIEW mention_filtered_comment;
-DROP VIEW non_empty_submission;
-DROP VIEW non_empty_comment;
-DROP TABLE tokenized_text_with_title_document;
-DROP TABLE tokenized_text_document;
-DROP TABLE stopword_filtered_text_with_title_document;
-DROP TABLE stopword_filtered_text_document;
-DROP TABLE lemmatized_text_with_title_document;
-DROP TABLE lemmatized_text_document;
-DROP TABLE mention_filtered_text_with_title_document;
-DROP TABLE mention_filtered_text_document;
-DROP TABLE non_empty_text_with_title_document;
-DROP TABLE non_empty_text_document;
+DROP VIEW IF EXISTS tokenized_submission;
+DROP VIEW IF EXISTS tokenized_comment;
+DROP VIEW IF EXISTS stopword_filtered_submission;
+DROP VIEW IF EXISTS stopword_filtered_comment;
+DROP VIEW IF EXISTS lemmatized_submission;
+DROP VIEW IF EXISTS lemmatized_comment;
+DROP VIEW IF EXISTS mention_filtered_submission;
+DROP VIEW IF EXISTS mention_filtered_comment;
+DROP VIEW IF EXISTS non_empty_submission;
+DROP VIEW IF EXISTS non_empty_comment;
+DROP TABLE IF EXISTS tokenized_text_with_title_document;
+DROP TABLE IF EXISTS tokenized_text_document;
+DROP TABLE IF EXISTS stopword_filtered_text_with_title_document;
+DROP TABLE IF EXISTS stopword_filtered_text_document;
+DROP TABLE IF EXISTS lemmatized_text_with_title_document;
+DROP TABLE IF EXISTS lemmatized_text_document;
+DROP TABLE IF EXISTS mention_filtered_text_with_title_document;
+DROP TABLE IF EXISTS mention_filtered_text_document;
+DROP TABLE IF EXISTS non_empty_text_with_title_document;
+DROP TABLE IF EXISTS non_empty_text_document;
 
 -- CREATE JPA entity tables
 -- (you may need to modify the foreign key constraint)
