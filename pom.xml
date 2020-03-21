@@ -53,7 +53,6 @@
 
 		<!-- Modified third party libraries -->
 		<module>lucene-shaded</module>
-		<module>sqlite-dialect-custom</module>
 		<module>stanford-corenlp</module>
 	</modules>
 
@@ -61,6 +60,13 @@
 		<textproc.java.version>11</textproc.java.version>
 		<textproc.lombok.version>1.18.12</textproc.lombok.version>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 	<dependencyManagement>
 		<dependencies>
@@ -98,8 +104,8 @@
 			</dependency>
 			<dependency>
 				<groupId>com.github.gwenn</groupId>
-				<artifactId>sqlite-dialect-custom</artifactId>
-				<version>0.1.0</version>
+				<artifactId>sqlite-dialect</artifactId>
+				<version>c3cee1f223</version>
 			</dependency>
 			<dependency>
 				<groupId>es.uvigo.esei.sing</groupId>

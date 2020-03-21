@@ -45,7 +45,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.github.gwenn</groupId>
-			<artifactId>sqlite-dialect-custom</artifactId>
+			<artifactId>sqlite-dialect</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>es.uvigo.esei.sing</groupId>
