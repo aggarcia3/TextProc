@@ -11,7 +11,6 @@ import java.util.Locale;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.SynchronousQueue;
-import java.util.regex.Pattern;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -143,8 +142,7 @@ final class NERMappingsFileWriter implements Closeable {
 	 * associated to this writer.
 	 *
 	 * @param token             The token to add a mapping to. It will be
-	 *                          interpreted as a literal string, and any Java
-	 *                          regular expression metacharacters will be escaped.
+	 *                          interpreted as a Java regular expression.
 	 * @param type              The label of the named entity type the named entity
 	 *                          identified by the token belongs to.
 	 * @param overwritableTypes A list of named entity types that this mapping is
@@ -186,7 +184,7 @@ final class NERMappingsFileWriter implements Closeable {
 			try {
 				recordQueue.put(
 					new Object[] {
-						Pattern.quote(token), type.toUpperCase(Locale.ROOT),
+						token, type.toUpperCase(Locale.ROOT),
 						overwritableTypesStringBuilder.toString(),
 						priority
 					}

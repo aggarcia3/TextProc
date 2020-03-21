@@ -220,8 +220,9 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 									for (int j = 0; j < unprocessedAttributeNames.length; ++j) {
 										// Ignore blank attributes, just in case. There's no point in processing
 										// them, and it might lead to exceptions
-										if (!documentAttributes[j + 1].isBlank()) {
-											final Annotation annotatedAttribute = new Annotation(documentAttributes[j + 1]);
+										final String attribute = documentAttributes[j + 1];
+										if (!attribute.isBlank()) {
+											final Annotation annotatedAttribute = new Annotation(attribute);
 
 											// Based on https://github.com/stanfordnlp/CoreNLP/blob/a9a4c2d75b177790a24c0f46188810668d044cd8/src/edu/stanford/nlp/patterns/GetPatternsFromDataMultiClass.java#L702
 											nlpPipeline.annotate(annotatedAttribute);
