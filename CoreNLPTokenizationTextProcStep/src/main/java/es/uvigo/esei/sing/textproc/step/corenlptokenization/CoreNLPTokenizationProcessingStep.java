@@ -60,7 +60,7 @@ final class CoreNLPTokenizationProcessingStep extends AbstractProcessingStep {
 			new TokenizerAnnotator(
 				false,
 				getParameters().get(LANGUAGE_PROCESSING_STEP_PARAMETER_NAME),
-				getParameters().getOrDefault(TOKENIZER_OPTIONS_PROCESSING_STEP_PARAMETER_NAME, "asciiQuotes=true")
+				getParameters().getOrDefault(TOKENIZER_OPTIONS_PROCESSING_STEP_PARAMETER_NAME, "quotes=ascii")
 			)
 		);
 
