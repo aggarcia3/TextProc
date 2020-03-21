@@ -41,7 +41,7 @@ final class LuceneIndexProcessingStep extends AbstractProcessingStep {
 		super(
 			// Additional mandatory and optional parameters, with their validation function
 			Map.of(
-				FOLDER_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.trim().isEmpty()
+				FOLDER_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank()
 			),
 			// Additional mandatory parameters
 			Set.of()

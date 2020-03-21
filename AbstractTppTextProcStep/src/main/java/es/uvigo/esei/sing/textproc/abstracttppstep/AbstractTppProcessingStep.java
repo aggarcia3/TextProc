@@ -174,7 +174,7 @@ public abstract class AbstractTppProcessingStep extends AbstractProcessingStep {
 	 */
 	private static Map<String, Predicate<String>> getActualValidationPredicates(@NonNull final Map<String, Predicate<String>> validationPredicates) {
 		final Map<String, Predicate<String>> commonValidationPredicates = Map.of(
-			ENDPOINT_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.trim().isEmpty()
+			ENDPOINT_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank()
 		);
 
 		final Map<String, Predicate<String>> actualValidationPredicates = new HashMap<>(

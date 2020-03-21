@@ -31,6 +31,7 @@ module es.uvigo.esei.sing.textproc.step {
 	exports es.uvigo.esei.sing.textproc.process;
 	exports es.uvigo.esei.sing.textproc.step;
 	exports es.uvigo.esei.sing.textproc.step.xml.definition;
+	exports es.uvigo.esei.sing.textproc.step.util;
 
 	uses es.uvigo.esei.sing.textproc.step.ProcessingStepService;
 }

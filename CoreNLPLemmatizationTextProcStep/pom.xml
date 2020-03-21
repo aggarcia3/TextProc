@@ -20,7 +20,7 @@
 			<artifactId>TextProcStep</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>edu.stanford.nlp</groupId>
+			<groupId>es.uvigo.esei.sing</groupId>
 			<artifactId>stanford-corenlp</artifactId>
 		</dependency>
 	</dependencies>

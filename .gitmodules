@@ -1,0 +1,3 @@
+[submodule "stanford-corenlp"]
+	path = stanford-corenlp
+	url = https://github.com/aggarcia3/CoreNLP.git

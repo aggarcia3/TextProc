@@ -25,11 +25,9 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
 import es.uvigo.esei.sing.textproc.step.AbstractProcessingStep.ProcessingConsumer;
+import es.uvigo.esei.sing.textproc.step.util.VariableHolder;
 import es.uvigo.esei.sing.textproc.step.ProcessingException;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NonNull;
-import lombok.Setter;
 
 import static java.util.AbstractMap.SimpleImmutableEntry;
 
@@ -254,20 +252,5 @@ final class TppHelper {
 				}
 			}
 		}
-	}
-
-	/**
-	 * Utility class whose only purpose is to provide a final reference to an
-	 * object, even if the wrapped object itself changes.
-	 *
-	 * @author Alejandro González García
-	 *
-	 * @param <T> The type of the variable to hold.
-	 * @implNote The implementation of this class is not thread safe.
-	 */
-	@AllArgsConstructor
-	private static final class VariableHolder<T> {
-		@NonNull @Getter @Setter
-		private T variable;
 	}
 }

@@ -41,8 +41,8 @@ final class CoreNLPTokenizationProcessingStep extends AbstractProcessingStep {
 		super(
 			// Additional mandatory and optional parameters, with their validation function
 			Map.of(
-				LANGUAGE_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.trim().isEmpty(),
-				TOKENIZER_OPTIONS_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.trim().isEmpty()
+				LANGUAGE_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank(),
+				TOKENIZER_OPTIONS_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank()
 			),
 			// Additional mandatory parameters
 			Set.of(LANGUAGE_PROCESSING_STEP_PARAMETER_NAME)

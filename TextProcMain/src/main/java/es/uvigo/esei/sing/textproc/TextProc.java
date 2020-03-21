@@ -5,6 +5,7 @@ package es.uvigo.esei.sing.textproc;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.Duration;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
@@ -123,9 +124,10 @@ public final class TextProc {
 			new ProcessingProcess().executeProcessDeclaration(processInputStream);
 			final long endTimestamp = System.currentTimeMillis();
 
-			final long elapsedSeconds = (endTimestamp - startTimestamp) / 1000;
+			final Duration elapsedTime = Duration.ofMillis(endTimestamp - startTimestamp);
 			final String elapsedTimeString = String.format(
-				"%02d:%02d:%02d", elapsedSeconds / 3600, (elapsedSeconds / 60) % 60, elapsedSeconds % 60
+				"%d day/s, %02d:%02d:%02d", elapsedTime.toDaysPart(),
+				elapsedTime.toHoursPart(), elapsedTime.toMinutesPart(), elapsedTime.toSecondsPart()
 			);
 
 			System.out.println();

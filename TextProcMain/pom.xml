@@ -64,6 +64,10 @@
 			<groupId>es.uvigo.esei.sing</groupId>
 			<artifactId>LuceneIndexTextProcStep</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>CoreNLPEntityExtractionTextProcStep</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

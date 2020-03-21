@@ -2,6 +2,7 @@
 
 package es.uvigo.esei.sing.textproc.step;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -77,11 +78,15 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 	private final Map<String, Predicate<String>> validationPredicates;
 	private final Set<String> requiredParameters;
 	private Map<String, String> parameters = null;
+	private volatile boolean databaseEntitiesChanged = false;
 
+	// Save System.out value at class initialization time so
+	// we're not affected by steps reassigning System.out
+	private static final PrintStream STDOUT = System.out;
 	private final DelegatingProgressBarConsumer progressBarConsumer = new DelegatingProgressBarConsumer(
 		(final String str) -> {
-			System.out.print('\r');
-			System.out.print(str);
+			STDOUT.print('\r');
+			STDOUT.print(str);
 		}
 	);
 
@@ -160,15 +165,15 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 				}
 			},
 			TEXT_DOCUMENT_WITH_TITLE_TABLE_NAME_PROCESSING_STEP_PARAMETER_NAME, (final String value) ->
-				value != null && !value.trim().isEmpty(),
+				value != null && !value.isBlank(),
 			TEXT_DOCUMENT_TABLE_NAME_PROCESSING_STEP_PARAMETER_NAME, (final String value) ->
-				value != null && !value.trim().isEmpty(),
+				value != null && !value.isBlank(),
 			PRIMARY_KEY_COLUMN_PROCESSING_STEP_PARAMETER_NAME, (final String value) ->
-				value != null && !value.trim().isEmpty(),
+				value != null && !value.isBlank(),
 			TEXT_COLUMN_PROCESSING_STEP_PARAMETER_NAME, (final String value) ->
-				value != null && !value.trim().isEmpty(),
+				value != null && !value.isBlank(),
 			TITLE_COLUMN_PROCESSING_STEP_PARAMETER_NAME, (final String value) ->
-				value != null && !value.trim().isEmpty()
+				value != null && !value.isBlank()
 		);
 
 		final Set<String> commonRequiredParameters = Set.of(
@@ -423,9 +428,13 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 				}
 
 				System.out.println();
-				System.out.println("> Committing changes to the database...");
-				TextProcPersistence.get().flushEntities();
-				System.out.print("> Changes committed.");
+				if (databaseEntitiesChanged) {
+					System.out.println("> Committing changes to the database...");
+					TextProcPersistence.get().flushEntities();
+					System.out.print("> Changes committed.");
+
+					databaseEntitiesChanged = false;
+				}
 
 				if (pageEndAction != null) {
 					pageEndAction.run();
@@ -479,6 +488,7 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 
 		try {
 			thisThreadEntityManager.persist(entityToPersist);
+			databaseEntitiesChanged = true;
 		} catch (final PersistenceException exc) {
 			transactionSuccessful = false;
 			throw exc;
@@ -607,6 +617,8 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 
 		System.out.println("> Deleting " + documentType.getSimpleName() + " entities...");
 		entityManager.createQuery(deleteCriteria).executeUpdate();
+
+		databaseEntitiesChanged = true;
 	}
 
 	/**

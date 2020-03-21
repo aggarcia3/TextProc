@@ -43,7 +43,7 @@ final class CoreNLPLemmatizationProcessingStep extends AbstractProcessingStep {
 	CoreNLPLemmatizationProcessingStep() {
 		super(
 			// Additional mandatory and optional parameters, with their validation function
-			Map.of(MODEL_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.trim().isEmpty()),
+			Map.of(MODEL_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank()),
 			// Additional mandatory parameters
 			Set.of()
 		);
