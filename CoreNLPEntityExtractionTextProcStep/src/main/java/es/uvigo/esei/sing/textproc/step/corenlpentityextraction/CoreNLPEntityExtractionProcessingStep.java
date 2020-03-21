@@ -218,15 +218,19 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 								// in the map for performance. The end result should be the same
 								for (final String[] documentAttributes : batchAttributes) {
 									for (int j = 0; j < unprocessedAttributeNames.length; ++j) {
-										final Annotation annotatedAttribute = new Annotation(documentAttributes[j + 1]);
+										// Ignore blank attributes, just in case. There's no point in processing
+										// them, and it might lead to exceptions
+										if (!documentAttributes[j + 1].isBlank()) {
+											final Annotation annotatedAttribute = new Annotation(documentAttributes[j + 1]);
 
-										// Based on https://github.com/stanfordnlp/CoreNLP/blob/a9a4c2d75b177790a24c0f46188810668d044cd8/src/edu/stanford/nlp/patterns/GetPatternsFromDataMultiClass.java#L702
-										nlpPipeline.annotate(annotatedAttribute);
-										for (final CoreMap sentence : annotatedAttribute.get(SentencesAnnotation.class)) {
-											sentenceMap.put(
-												Integer.toString(k++), // Luckily, the key value just needs to be unique
-												DataInstance.getNewInstance(PatternFactory.PatternType.SURFACE, sentence)
-											);
+											// Based on https://github.com/stanfordnlp/CoreNLP/blob/a9a4c2d75b177790a24c0f46188810668d044cd8/src/edu/stanford/nlp/patterns/GetPatternsFromDataMultiClass.java#L702
+											nlpPipeline.annotate(annotatedAttribute);
+											for (final CoreMap sentence : annotatedAttribute.get(SentencesAnnotation.class)) {
+												sentenceMap.put(
+													Integer.toString(k++), // Luckily, the key value just needs to be unique
+													DataInstance.getNewInstance(PatternFactory.PatternType.SURFACE, sentence)
+												);
+											}
 										}
 									}
 								}
