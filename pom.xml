@@ -275,6 +275,11 @@
 						<encoding>UTF-8</encoding>
 						<source>${textproc.java.version}</source>
 						<target>${textproc.java.version}</target>
+						<fork>true</fork>
+						<compilerArgs>
+							<!-- Needed for Stanford CoreNLP to compile on all platforms -->
+							<compilerArg>-J-Xss8M</compilerArg>
+						</compilerArgs>
 						<annotationProcessorPaths>
 							<annotationProcessorPath>
 								<groupId>org.projectlombok</groupId>
