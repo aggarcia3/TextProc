@@ -119,8 +119,8 @@ final class NERMappingsFileWriter implements Closeable {
 	 * associated to this writer, with a priority of 0.
 	 *
 	 * @param token             The token to add a mapping to. It will be
-	 *                          interpreted as a literal string, and any Java
-	 *                          regular expression metacharacters will be escaped.
+	 *                          interpreted as a Java regular expression. Empty
+	 *                          tokens will be ignored and not written to the file.
 	 * @param type              The label of the named entity type the named entity
 	 *                          identified by the token belongs to.
 	 * @param overwritableTypes A list of named entity types that this mapping is
@@ -142,7 +142,8 @@ final class NERMappingsFileWriter implements Closeable {
 	 * associated to this writer.
 	 *
 	 * @param token             The token to add a mapping to. It will be
-	 *                          interpreted as a Java regular expression.
+	 *                          interpreted as a Java regular expression. Empty
+	 *                          tokens will be ignored and not written to the file.
 	 * @param type              The label of the named entity type the named entity
 	 *                          identified by the token belongs to.
 	 * @param overwritableTypes A list of named entity types that this mapping is

@@ -32,7 +32,7 @@ import lombok.NonNull;
 @XmlSeeAlso({
 	// Common step parameter definitions
 	PageSizeProcessingStepParameter.class,
-	DocumentBatchSizeProcessingStepParameter.class,
+	BatchSizeProcessingStepParameter.class,
 	TextDocumentWithTitleTableNameProcessingStepParameter.class,
 	TextDocumentTableNameProcessingStepParameter.class,
 	PrimaryKeyColumnProcessingStepParameter.class,

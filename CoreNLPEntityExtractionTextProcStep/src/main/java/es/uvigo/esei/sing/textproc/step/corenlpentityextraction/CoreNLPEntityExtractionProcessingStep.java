@@ -212,28 +212,46 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 							numberOfUnprocessedEntitiesProviders.get(i).get(),
 							(final List<String[]> batchAttributes) -> {
 								int k = 0;
+								final StringBuilder concatenatedDocuments = new StringBuilder(
+									// On average, there are 5 letters per word (+ 1 for space)
+									6 *
+									// Most social media posts contain 150 or less words
+									150 *
+									// How many posts (documents) are we processing now
+									Integer.parseInt(
+										getParameters().getOrDefault(
+											BATCH_SIZE_STEP_PARAMETER_NAME, DEFAULT_BATCH_SIZE_STEP_PARAMETER
+										)
+									)
+								);
 								final Map<String, DataInstance> sentenceMap = new HashMap<>();
 
-								// Store every sentence of every attribute of every document in the batch
-								// in the map for performance. The end result should be the same
+								// Concatenate all attributes of all documents in a buffer for
+								// top efficiency
 								for (final String[] documentAttributes : batchAttributes) {
 									for (int j = 0; j < unprocessedAttributeNames.length; ++j) {
-										// Ignore blank attributes, just in case. There's no point in processing
-										// them, and it might lead to exceptions
-										final String attribute = documentAttributes[j + 1];
-										if (!attribute.isBlank()) {
-											final Annotation annotatedAttribute = new Annotation(attribute);
-
-											// Based on https://github.com/stanfordnlp/CoreNLP/blob/a9a4c2d75b177790a24c0f46188810668d044cd8/src/edu/stanford/nlp/patterns/GetPatternsFromDataMultiClass.java#L702
-											nlpPipeline.annotate(annotatedAttribute);
-											for (final CoreMap sentence : annotatedAttribute.get(SentencesAnnotation.class)) {
-												sentenceMap.put(
-													Integer.toString(k++), // Luckily, the key value just needs to be unique
-													DataInstance.getNewInstance(PatternFactory.PatternType.SURFACE, sentence)
-												);
-											}
+										if (!documentAttributes[j + 1].isBlank()) {
+											concatenatedDocuments.append(documentAttributes[j + 1])
+												.append('\n');
 										}
 									}
+								}
+
+								// In the unlikely case that the resulting document is empty, ignore it
+								final String document = concatenatedDocuments.toString().strip();
+								if (document.isEmpty()) {
+									return;
+								}
+
+								// Now store every sentence of the concatenated documents buffer in a map.
+								// Based on https://github.com/stanfordnlp/CoreNLP/blob/a9a4c2d75b177790a24c0f46188810668d044cd8/src/edu/stanford/nlp/patterns/GetPatternsFromDataMultiClass.java#L702
+								final Annotation annotatedDocument = new Annotation(document);
+								nlpPipeline.annotate(annotatedDocument);
+								for (final CoreMap sentence : annotatedDocument.get(SentencesAnnotation.class)) {
+									sentenceMap.put(
+										Integer.toString(k++), // Luckily, the key value just needs to be unique
+										DataInstance.getNewInstance(PatternFactory.PatternType.SURFACE, sentence)
+									);
 								}
 
 								Path temporarySentencesFile = null;
@@ -241,7 +259,6 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 									temporarySentencesFile = Files.createTempFile(
 										temporaryProcessingDirectory, "docsents", ".ser"
 									);
-									temporarySentencesFile.toFile().deleteOnExit();
 
 									// Serialize the map, like IOUtils does
 									// (but better, because this closes the file even if an exception is thrown)
@@ -263,15 +280,18 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 									synchronized (spiedLock) {
 										spiedProperties.setProperty("loadSavedPatternsWordsDir", modelGenerated.getVariable().toString());
 
-										final PrintStream stdout = System.out; final PrintStream stderr = System.err;
+										final PrintStream stdout = System.out;
+										final PrintStream stderr = System.err;
 										try {
 											// SPIED behaves pollutes standard output no matter what.
 											// Avoid that by reassigning the output streams temporarily
-											System.setOut(nullPrintStream); System.setErr(nullPrintStream);
+											System.setOut(nullPrintStream);
+											System.setErr(nullPrintStream);
 
 											GetPatternsFromDataMultiClass.<SurfacePattern>run(spiedProperties);
 										} finally {
-											System.setOut(stdout); System.setErr(stderr);
+											System.setOut(stdout);
+											System.setErr(stderr);
 										}
 
 										modelGenerated.setVariable(true);
@@ -280,11 +300,11 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 										// ${temporaryOutputDirectory}/${identifier}/${label}/learnedwords.txt
 										// These files are overwritten between runs, so their contents need to
 										// be copied elsewhere. The resulting NER mapping file is the ideal place,
-										// but we are in a critical section here, so move the files to another path
-										// to be able to copy concurrently
+										// but we are in a critical section here, so copy the files to another path
+										// and process them later
 										for (final String label : labelTerms.keySet()) {
 											learnedWordsFiles.add(new SimpleImmutableEntry<>(label,
-												Files.move(
+												Files.copy(
 													temporaryOutputDirectory
 														.resolve(spiedProperties.getProperty("identifier"))
 														.resolve(label)
@@ -292,7 +312,7 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 													Files.createTempFile(
 														temporaryProcessingDirectory, "learnedwords", ".txt"
 													),
-													StandardCopyOption.REPLACE_EXISTING
+													StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES
 												)
 											));
 										}

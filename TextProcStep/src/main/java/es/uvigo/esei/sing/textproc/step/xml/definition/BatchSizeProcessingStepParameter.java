@@ -6,9 +6,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Parameter for processing steps which represents the number of documents
- * within a page that will be batched for processing at once.
+ * within a page that will be batched for processing at once, in the same
+ * thread.
  *
  * @author Alejandro González García
  */
 @XmlRootElement(name = "documentsPerBatch")
-public final class DocumentBatchSizeProcessingStepParameter extends AbstractProcessingStepParameter {}
+public final class BatchSizeProcessingStepParameter extends AbstractProcessingStepParameter {}

@@ -27,7 +27,7 @@ import es.uvigo.esei.sing.textproc.entity.ProcessedDocument;
 import es.uvigo.esei.sing.textproc.logging.TextProcLogging;
 import es.uvigo.esei.sing.textproc.persistence.TextProcPersistence;
 import es.uvigo.esei.sing.textproc.step.internal.ProcessingStepInterface;
-import es.uvigo.esei.sing.textproc.step.xml.definition.DocumentBatchSizeProcessingStepParameter;
+import es.uvigo.esei.sing.textproc.step.xml.definition.BatchSizeProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.xml.definition.PageSizeProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.xml.definition.PrimaryKeyColumnProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.xml.definition.TextColumnProcessingStepParameter;
@@ -50,13 +50,13 @@ import me.tongfei.progressbar.ProgressBarStyle;
  */
 public abstract class AbstractProcessingStep implements ProcessingStepInterface {
 	// Common step parameter names
-	private static final String PAGE_SIZE_STEP_PARAMETER_NAME = new PageSizeProcessingStepParameter().getName();
-	private static final String DOCUMENT_BATCH_SIZE_STEP_PARAMETER_NAME = new DocumentBatchSizeProcessingStepParameter().getName();
-	private static final String TEXT_DOCUMENT_WITH_TITLE_TABLE_NAME_PROCESSING_STEP_PARAMETER_NAME = new TextDocumentWithTitleTableNameProcessingStepParameter().getName();
-	private static final String TEXT_DOCUMENT_TABLE_NAME_PROCESSING_STEP_PARAMETER_NAME = new TextDocumentTableNameProcessingStepParameter().getName();
-	private static final String PRIMARY_KEY_COLUMN_PROCESSING_STEP_PARAMETER_NAME = new PrimaryKeyColumnProcessingStepParameter().getName();
-	private static final String TEXT_COLUMN_PROCESSING_STEP_PARAMETER_NAME = new TextColumnProcessingStepParameter().getName();
-	private static final String TITLE_COLUMN_PROCESSING_STEP_PARAMETER_NAME = new TitleColumnProcessingStepParameter().getName();
+	protected static final String PAGE_SIZE_STEP_PARAMETER_NAME = new PageSizeProcessingStepParameter().getName();
+	protected static final String BATCH_SIZE_STEP_PARAMETER_NAME = new BatchSizeProcessingStepParameter().getName();
+	protected static final String TEXT_DOCUMENT_WITH_TITLE_TABLE_NAME_PROCESSING_STEP_PARAMETER_NAME = new TextDocumentWithTitleTableNameProcessingStepParameter().getName();
+	protected static final String TEXT_DOCUMENT_TABLE_NAME_PROCESSING_STEP_PARAMETER_NAME = new TextDocumentTableNameProcessingStepParameter().getName();
+	protected static final String PRIMARY_KEY_COLUMN_PROCESSING_STEP_PARAMETER_NAME = new PrimaryKeyColumnProcessingStepParameter().getName();
+	protected static final String TEXT_COLUMN_PROCESSING_STEP_PARAMETER_NAME = new TextColumnProcessingStepParameter().getName();
+	protected static final String TITLE_COLUMN_PROCESSING_STEP_PARAMETER_NAME = new TitleColumnProcessingStepParameter().getName();
 
 	// Common step parameter default values
 	/**
@@ -64,16 +64,16 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 	 * DB commit performance or transaction commit frequency are an issue. Ideally,
 	 * the page size should be a multiple of the batch size.
 	 */
-	private static final String DEFAULT_PAGE_SIZE_STEP_PARAMETER = "32768";
+	protected static final String DEFAULT_PAGE_SIZE_STEP_PARAMETER = "32768";
 	/**
-	 * The default document batch size. The documents in a page will be divided in
-	 * batches with this many documents, as much as possible. The documents in a
-	 * batch will be processed together.
+	 * The default batch size. The documents in a page will be divided in batches
+	 * with this many documents, as much as possible. The documents in a batch will
+	 * be processed together, in the same thread.
 	 */
-	private static final String DEFAULT_DOCUMENT_BATCH_SIZE_STEP_PARAMETER = "512";
-	private static final String DEFAULT_PRIMARY_KEY_COLUMN_PROCESSING_STEP_PARAMETER = "id";
-	private static final String DEFAULT_TEXT_COLUMN_PROCESSING_STEP_PARAMETER = "text";
-	private static final String DEFAULT_TITLE_COLUMN_PROCESSING_STEP_PARAMETER = "title";
+	protected static final String DEFAULT_BATCH_SIZE_STEP_PARAMETER = "512";
+	protected static final String DEFAULT_PRIMARY_KEY_COLUMN_PROCESSING_STEP_PARAMETER = "id";
+	protected static final String DEFAULT_TEXT_COLUMN_PROCESSING_STEP_PARAMETER = "text";
+	protected static final String DEFAULT_TITLE_COLUMN_PROCESSING_STEP_PARAMETER = "title";
 
 	private final Map<String, Predicate<String>> validationPredicates;
 	private final Set<String> requiredParameters;
@@ -149,7 +149,7 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 					return false;
 				}
 			},
-			DOCUMENT_BATCH_SIZE_STEP_PARAMETER_NAME, (final String value) -> {
+			BATCH_SIZE_STEP_PARAMETER_NAME, (final String value) -> {
 				try {
 					final int actualValue = Integer.parseInt(value);
 					if (actualValue < 1) {
@@ -290,8 +290,10 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 	 * To maximize performance, the processing action may be executed in any thread,
 	 * so thread-safety must be guaranteed in its implementation if shared state is
 	 * to be accessed.
+	 * </p>
 	 * <p>
 	 * This method assumes a transaction is already active.
+	 * </p>
 	 *
 	 * @param querySupplier     A query supplier, that must return an appropriate,
 	 *                          non-null native query object when invoked. This
@@ -307,8 +309,9 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 	 *                          processed, if processing is successful. It might be
 	 *                          {@code null}, in which case nothing will be done. In
 	 *                          any case, no matter if processing is successful or
-	 *                          not, any pending transaction is committed or rolled
-	 *                          back before invoking this action.
+	 *                          not, any database transactions made by calling
+	 *                          methods of this class are committed or rolled back
+	 *                          before invoking this action.
 	 * @throws ProcessingException If any parameter is invalid, or an exception
 	 *                             occurred during the processing.
 	 */
@@ -323,7 +326,7 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 			getParameters().getOrDefault(PAGE_SIZE_STEP_PARAMETER_NAME, DEFAULT_PAGE_SIZE_STEP_PARAMETER)
 		);
 		final int batchSize = Integer.parseInt(
-			getParameters().getOrDefault(DOCUMENT_BATCH_SIZE_STEP_PARAMETER_NAME, DEFAULT_DOCUMENT_BATCH_SIZE_STEP_PARAMETER)
+			getParameters().getOrDefault(BATCH_SIZE_STEP_PARAMETER_NAME, DEFAULT_BATCH_SIZE_STEP_PARAMETER)
 		);
 		final List<String[]> entityAttributesBatch = new ArrayList<>(batchSize);
 
