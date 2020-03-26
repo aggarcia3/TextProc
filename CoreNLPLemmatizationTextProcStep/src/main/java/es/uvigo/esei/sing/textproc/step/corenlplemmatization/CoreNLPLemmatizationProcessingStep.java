@@ -20,7 +20,6 @@ import edu.stanford.nlp.pipeline.POSTaggerAnnotator;
 import edu.stanford.nlp.pipeline.TokenizerAnnotator;
 import edu.stanford.nlp.pipeline.TokenizerAnnotator.TokenizerType;
 import edu.stanford.nlp.pipeline.WordsToSentencesAnnotator;
-import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 import es.uvigo.esei.sing.textproc.entity.ProcessedDocument;
 import es.uvigo.esei.sing.textproc.step.AbstractProcessingStep;
 import es.uvigo.esei.sing.textproc.step.ProcessingException;
@@ -63,13 +62,11 @@ final class CoreNLPLemmatizationProcessingStep extends AbstractProcessingStep {
 		// POS tags are required by lemmatization
 		nlpPipeline.addAnnotator(
 			new POSTaggerAnnotator(
-				new MaxentTagger(
-					getParameters().getOrDefault(
-						MODEL_PROCESSING_STEP_PARAMETER_NAME,
-						// Mirror of a model included with the CoreNLP 3.9.2 distribution
-						"https://github.com/aggarcia3/corenlp-models/raw/master/english-left3words-distsim.tagger"
-					)
-				)
+				getParameters().getOrDefault(
+					MODEL_PROCESSING_STEP_PARAMETER_NAME,
+					// Mirror of a model included with the CoreNLP 3.9.2 distribution
+					"https://www.dropbox.com/s/425gi078a8o7fxk/english-left3words-distsim.tagger?dl=1"
+				), false, Integer.MAX_VALUE, Runtime.getRuntime().availableProcessors()
 			)
 		);
 		nlpPipeline.addAnnotator(new MorphaAnnotator(false));
