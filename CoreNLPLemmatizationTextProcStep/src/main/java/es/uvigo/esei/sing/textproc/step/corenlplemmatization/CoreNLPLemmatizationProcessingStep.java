@@ -65,7 +65,7 @@ final class CoreNLPLemmatizationProcessingStep extends AbstractProcessingStep {
 				getParameters().getOrDefault(
 					MODEL_PROCESSING_STEP_PARAMETER_NAME,
 					// Mirror of a model included with the CoreNLP 3.9.2 distribution
-					"https://www.dropbox.com/s/425gi078a8o7fxk/english-left3words-distsim.tagger?dl=1"
+					"https://dl.dropboxusercontent.com/s/425gi078a8o7fxk/english-left3words-distsim.tagger"
 				), false, Integer.MAX_VALUE, Runtime.getRuntime().availableProcessors()
 			)
 		);
