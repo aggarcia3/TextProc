@@ -7,7 +7,7 @@ import java.util.Set;
 import es.uvigo.esei.sing.textproc.entity.ProcessedDocument;
 import es.uvigo.esei.sing.textproc.step.AbstractProcessingStep;
 import es.uvigo.esei.sing.textproc.step.ProcessingStepService;
-import es.uvigo.esei.sing.textproc.step.luceneindex.xml.definition.FolderProcessingStepParameter;
+import es.uvigo.esei.sing.textproc.step.luceneindex.xml.definition.FolderPathProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.xml.definition.AbstractProcessingStepParameter;
 
 /**
@@ -28,7 +28,7 @@ public final class LuceneIndexProcessingStepService implements ProcessingStepSer
 
 	@Override
 	public Set<Class<? extends AbstractProcessingStepParameter>> getAdditionalParameters() {
-		return Set.of(FolderProcessingStepParameter.class);
+		return Set.of(FolderPathProcessingStepParameter.class);
 	}
 
 	@Override

@@ -27,6 +27,18 @@ import es.uvigo.esei.sing.textproc.step.corenlptokenization.xml.definition.Token
 /**
  * Tokenizes documents, according to the provided parameters, using Stanford
  * CoreNLP.
+ * <p>
+ * Example declaration for this step in a process definition file:
+ * </p>
+ * <pre>
+ * {@code <step action="CoreNLPTokenization">
+ * 	<parameters>
+ * 		<textDocumentWithTitleTableName>submission</textDocumentWithTitleTableName>
+ * 		<textDocumentTableName>comment</textDocumentTableName>
+ * 		<cnlpt:language>en</cnlpt:language>
+ * 	</parameters>
+ * </step>}
+ * </pre>
  *
  * @author Alejandro González García
  */

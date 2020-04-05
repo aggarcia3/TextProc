@@ -29,7 +29,20 @@ import es.uvigo.esei.sing.textproc.step.corenlplemmatization.xml.definition.Mode
 
 /**
  * Lemmatizes tokens of documents, according to the provided parameters, using
- * Stanford CoreNLP.
+ * Stanford CoreNLP. This step also normalizes documents to lowercase; see
+ * <a href=
+ * "https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/process/Morphology.html">https://nlp.stanford.edu/nlp/javadoc/javanlp/edu/stanford/nlp/process/Morphology.html</a>.
+ * <p>
+ * Example declaration for this step in a process definition file:
+ * </p>
+ * <pre>
+ * {@code <step action="CoreNLPLemmatization">
+ * 	<parameters>
+ * 		<textDocumentWithTitleTableName>stopword_filtered_submission</textDocumentWithTitleTableName>
+ * 		<textDocumentTableName>stopword_filtered_comment</textDocumentTableName>
+ * 	</parameters>
+ * </step>}
+ * </pre>
  *
  * @author Alejandro González García
  */

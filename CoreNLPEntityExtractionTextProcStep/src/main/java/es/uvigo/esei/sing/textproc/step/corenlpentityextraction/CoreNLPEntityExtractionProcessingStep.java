@@ -64,6 +64,20 @@ import lombok.NonNull;
  * Extracts new named entities from the input documents, from a seed set of
  * named entities, using the bootstrapped pattern-based learning algorithm
  * included with CoreNLP.
+ * <p>
+ * Example declaration for this step in a process definition file:
+ * </p>
+ * <pre>
+ * {@code <step action="CoreNLPEntityExtraction">
+ * 	<parameters>
+ * 		<textDocumentWithTitleTableName>non_empty_submission</textDocumentWithTitleTableName>
+ * 		<textDocumentTableName>non_empty_comment</textDocumentTableName>
+ * 		<cnlpee:seedWordsFilesDirectory>entityextraction/dictionaries</cnlpee:seedWordsFilesDirectory>
+ * 		<cnlpee:nerMappingsFile>entityextraction/entities.tsv</cnlpee:nerMappingsFile>
+ * 		<cnlpee:overwritableNerCategories>CAUSE_OF_DEATH,IDEOLOGY,PERSON,ORGANIZATION</cnlpee:overwritableNerCategories>
+ * 	</parameters>
+ * </step>}
+ * </pre>
  *
  * @author Alejandro González García
  */

@@ -24,15 +24,27 @@ import org.apache.lucene.store.FSDirectory;
 
 import es.uvigo.esei.sing.textproc.step.AbstractProcessingStep;
 import es.uvigo.esei.sing.textproc.step.ProcessingException;
-import es.uvigo.esei.sing.textproc.step.luceneindex.xml.definition.FolderProcessingStepParameter;
+import es.uvigo.esei.sing.textproc.step.luceneindex.xml.definition.FolderPathProcessingStepParameter;
 
 /**
  * Builds a Lucene index for all the input documents.
+ * <p>
+ * Example declaration for this step in a process definition file:
+ * </p>
+ * <pre>
+ * {@code <step action="LuceneIndex">
+ * 	<parameters>
+ * 		<textDocumentWithTitleTableName>non_empty_submission</textDocumentWithTitleTableName>
+ * 		<textDocumentTableName>non_empty_comment</textDocumentTableName>
+ * 		<li:folderPath>my_index</li:folderPath>
+ * 	</parameters>
+ * </step>}
+ * </pre>
  *
  * @author Alejandro González García
  */
 final class LuceneIndexProcessingStep extends AbstractProcessingStep {
-	private static final String FOLDER_PROCESSING_STEP_PARAMETER_NAME = new FolderProcessingStepParameter().getName();
+	private static final String FOLDER_PATH_PROCESSING_STEP_PARAMETER_NAME = new FolderPathProcessingStepParameter().getName();
 
 	/**
 	 * Instantiates a Lucene index building processing step.
@@ -41,7 +53,7 @@ final class LuceneIndexProcessingStep extends AbstractProcessingStep {
 		super(
 			// Additional mandatory and optional parameters, with their validation function
 			Map.of(
-				FOLDER_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank()
+				FOLDER_PATH_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank()
 			),
 			// Additional mandatory parameters
 			Set.of()
@@ -52,7 +64,7 @@ final class LuceneIndexProcessingStep extends AbstractProcessingStep {
 	protected void run() throws ProcessingException {
 		try {
 			final FSDirectory indexFolder = FSDirectory.open(Path.of(
-				getParameters().getOrDefault(FOLDER_PROCESSING_STEP_PARAMETER_NAME, "lucene_index")
+				getParameters().getOrDefault(FOLDER_PATH_PROCESSING_STEP_PARAMETER_NAME, "lucene_index")
 			));
 
 			// Use a simple whitespace analyzer and tokenizer because input documents are assumed to be processed.

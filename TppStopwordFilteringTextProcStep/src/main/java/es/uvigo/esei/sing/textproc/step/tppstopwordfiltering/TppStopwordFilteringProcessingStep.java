@@ -24,6 +24,23 @@ import lombok.Setter;
 
 /**
  * Removes stopwords from documents, using Text Processing Python.
+ * <p>
+ * In the reference implementation of Text Processing Python, this step
+ * normalizes multiple spaces to a single space, and uses NLTK stopword lists.
+ * </p>
+ * <p>
+ * Example declaration for this step in a process definition file:
+ * </p>
+ * <pre>
+ * {@code <step action="TppStopwordFiltering">
+ * 	<parameters>
+ * 		<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/remove-stopwords</tpp:endpoint>
+ * 		<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
+ * 		<textDocumentTableName>tokenized_comment</textDocumentTableName>
+ * 		<tppsf:language>english</tppsf:language>
+ *	</parameters>
+ * </step>}
+ * </pre>
  *
  * @author Alejandro González García
  */

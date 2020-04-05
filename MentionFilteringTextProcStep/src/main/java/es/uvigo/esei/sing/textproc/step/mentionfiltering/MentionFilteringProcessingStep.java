@@ -21,6 +21,18 @@ import es.uvigo.esei.sing.textproc.step.mentionfiltering.xml.definition.MentionT
 /**
  * Removes all the mentions in a document, according to the provided mention
  * type.
+ * <p>
+ * Example declaration for this step in a process definition file:
+ * </p>
+ * <pre>
+ * {@code <step action="MentionFiltering">
+ * 	<parameters>
+ * 		<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
+ * 		<textDocumentTableName>tokenized_comment</textDocumentTableName>
+ * 		<mf:mentionType>reddit_all</mf:mentionType>
+ * 	</parameters>
+ * </step>}
+ * </pre>
  *
  * @author Alejandro González García
  */

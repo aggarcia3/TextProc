@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import es.uvigo.esei.sing.textproc.step.xml.definition.AbstractProcessingStepParameter;
 
 /**
- * Parameter for specifying a folder name.
+ * Parameter for specifying a folder path.
  *
  * @author Alejandro González García
  */
-@XmlRootElement(name = "folderName")
-public final class FolderProcessingStepParameter extends AbstractProcessingStepParameter {}
+@XmlRootElement(name = "folderPath")
+public final class FolderPathProcessingStepParameter extends AbstractProcessingStepParameter {}

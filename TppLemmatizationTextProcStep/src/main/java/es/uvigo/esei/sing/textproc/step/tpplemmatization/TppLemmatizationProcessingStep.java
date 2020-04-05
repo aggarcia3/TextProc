@@ -25,6 +25,25 @@ import lombok.Setter;
 /**
  * Lemmatizes all the words in a document, according to the provided parameters,
  * using Text Processing Python.
+ * <p>
+ * In the reference implementation of Text Processing Python, this step also
+ * removes pronouns and normalizes to lowercase. See
+ * <a href="https://spacy.io/api/annotation#lemmatization">SpaCy
+ * documentation</a>.
+ * </p>
+ * <p>
+ * Example declaration for this step in a process definition file:
+ * </p>
+ * <pre>
+ * {@code <step action="TppLemmatization">
+ * 	<parameters>
+ * 		<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/lemmatize</tpp:endpoint>
+ * 		<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
+ * 		<textDocumentTableName>tokenized_comment</textDocumentTableName>
+ * 		<tppl:model>en_core_web_sm</tppl:model>
+ * 	</parameters>
+ * </step>}
+ * </pre>
  *
  * @author Alejandro González García
  */

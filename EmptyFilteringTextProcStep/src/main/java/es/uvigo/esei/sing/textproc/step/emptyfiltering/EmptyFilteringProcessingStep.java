@@ -21,11 +21,23 @@ import es.uvigo.esei.sing.textproc.step.emptyfiltering.xml.definition.IncludeRed
 /**
  * Skips copying to a processed entity a unprocessed entity that has all its
  * texts attributes empty (or filled with non-alphabetical characters).
+ * <p>
+ * Example declaration for this step in a process definition file:
+ * </p>
+ * <pre>
+ * {@code <step action="EmptyFiltering">
+ * 	<parameters>
+ * 		<textDocumentWithTitleTableName>mention_filtered_submission</textDocumentWithTitleTableName>
+ * 		<textDocumentTableName>mention_filtered_comment</textDocumentTableName>
+ * 	</parameters>
+ * </step>}
+ * </pre>
  *
  * @author Alejandro González García
  */
 final class EmptyFilteringProcessingStep extends AbstractProcessingStep {
 	private static final String INCLUDE_REDDIT_DELETED_PROCESSING_STEP_PARAMETER_NAME = new IncludeRedditDeletedProcessingStepParameter().getName();
+
 	/**
 	 * Instantiates a non empty filtering processing step.
 	 */

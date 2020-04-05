@@ -20,6 +20,18 @@ import es.uvigo.esei.sing.textproc.step.tpptokenization.entity.TppTokenizedTextW
 /**
  * Tokenizes documents, according to the provided parameters, using Text
  * Processing Python.
+ * <p>
+ * Example declaration for this step in a process definition file:
+ * </p>
+ * <pre>
+ * {@code <step action="TppTokenization">
+ * 	<parameters>
+ * 		<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/casual-tokenize</tpp:endpoint>
+ * 		<textDocumentWithTitleTableName>submission</textDocumentWithTitleTableName>
+ * 		<textDocumentTableName>comment</textDocumentTableName>
+ * 	</parameters>
+ * </step>}
+ * </pre>
  *
  * @author Alejandro González García
  */
