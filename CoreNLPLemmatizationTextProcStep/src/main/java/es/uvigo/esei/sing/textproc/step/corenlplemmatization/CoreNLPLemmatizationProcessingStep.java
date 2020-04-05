@@ -64,8 +64,8 @@ final class CoreNLPLemmatizationProcessingStep extends AbstractProcessingStep {
 			new POSTaggerAnnotator(
 				getParameters().getOrDefault(
 					MODEL_PROCESSING_STEP_PARAMETER_NAME,
-					// Mirror of a model included with the CoreNLP 3.9.2 distribution
-					"https://dl.dropboxusercontent.com/s/425gi078a8o7fxk/english-left3words-distsim.tagger"
+					// Mirror of a model included with the latest CoreNLP models (as of 03-26-2020)
+					"https://dl.dropboxusercontent.com/s/bmqus6uon0cr9ek/english-caseless-left3words-distsim.tagger"
 				), false, Integer.MAX_VALUE, 1
 			)
 		);
