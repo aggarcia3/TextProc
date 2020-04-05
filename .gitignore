@@ -370,3 +370,6 @@ lucene_index/
 
 # Default entity extraction result directory
 entityextraction/
+
+# Default knowledge base output directory
+knowledge_base/

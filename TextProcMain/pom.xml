@@ -68,6 +68,10 @@
 			<groupId>es.uvigo.esei.sing</groupId>
 			<artifactId>CoreNLPEntityExtractionTextProcStep</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>es.uvigo.esei.sing</groupId>
+			<artifactId>CoreNLPKnowledgeBasePopulationTextProcStep</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

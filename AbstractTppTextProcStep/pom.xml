@@ -30,20 +30,11 @@
 		<dependency>
 			<groupId>org.glassfish.jersey.core</groupId>
 			<artifactId>jersey-client</artifactId>
-			<version>2.30</version>
 		</dependency>
 		<dependency>
 			<!-- Required by Jersey to work -->
 			<groupId>org.glassfish.jersey.inject</groupId>
 			<artifactId>jersey-hk2</artifactId>
-			<version>2.30</version>
-			<exclusions>
-				<!-- Use Hibernate javassist version -->
-				<exclusion>
-					<groupId>org.javassist</groupId>
-					<artifactId>javassist</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>es.uvigo.esei.sing</groupId>
