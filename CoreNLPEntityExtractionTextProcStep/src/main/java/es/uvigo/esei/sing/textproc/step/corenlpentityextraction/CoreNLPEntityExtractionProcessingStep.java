@@ -4,6 +4,7 @@ package es.uvigo.esei.sing.textproc.step.corenlpentityextraction;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
@@ -73,6 +74,8 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 	private static final String OVERWRITABLE_NER_CATEGORIES_STEP_PARAMETER_NAME = new OverwritableNERCategoriesStepParameter().getName();
 
 	private static final Properties DEFAULT_SPIED_PROPERTIES;
+
+	private static final String CPU_THREADS_STRING = Integer.toString(Runtime.getRuntime().availableProcessors());
 
 	static {
 		try {
@@ -156,6 +159,18 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 
 					final Properties spiedProperties = new Properties();
 					spiedProperties.putAll(DEFAULT_SPIED_PROPERTIES); // The default properties mechanism doesn't work with CoreNLP
+					// Set a reasonable default value for numThreads
+					spiedProperties.setProperty("numThreads", CPU_THREADS_STRING);
+
+					// Load custom properties, if applicable
+					if (getParameters().get(PROPERTIES_FILE_STEP_PARAMETER_NAME) != null) {
+						spiedProperties.load(
+							new FileReader(
+								getParameters().get(PROPERTIES_FILE_STEP_PARAMETER_NAME), StandardCharsets.UTF_8
+							)
+						);
+					}
+
 					spiedProperties.setProperty("seedWordsFiles", seedWordsFilesProperty.getValue());
 					spiedProperties.setProperty("fileFormat", "ser"); // We generate this serialized format for performance. See below
 					spiedProperties.setProperty("outDir", temporaryOutputDirectory.toRealPath().toString());
@@ -178,6 +193,8 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 					nerAnnotatorProperties.setProperty("ner.useSUTime", Boolean.toString(false));
 					nerAnnotatorProperties.setProperty("ner.applyFineGrained", spiedProperties.getProperty("applyFineGrainedRegexner"));
 					nerAnnotatorProperties.setProperty("ner.fine.regexner.mapping", spiedProperties.getProperty("fineGrainedRegexnerMapping"));
+					// Use all CPU threads for NER. This usually improves performance
+					nerAnnotatorProperties.setProperty("ner.nthreads", CPU_THREADS_STRING);
 
 					// We have the seed words files. Now it is a good time to create the pipeline.
 					// Although SPIED automatically creates a pipeline and reuses it, we can do better
