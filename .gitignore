@@ -373,3 +373,6 @@ entityextraction/
 
 # Default knowledge base output directory
 knowledge_base/
+
+# Binary library folder
+!/lib/*
