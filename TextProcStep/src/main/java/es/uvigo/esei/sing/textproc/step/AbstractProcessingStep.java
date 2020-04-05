@@ -255,10 +255,13 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 	 * @throws ProcessingException If the validation is unsuccessful.
 	 */
 	private void validateParameters() throws ProcessingException {
-		if (!parameters.keySet().containsAll(requiredParameters)) {
-			throw new ProcessingException(
-				"Missing required parameter for step " + getClass().getSimpleName()
-			);
+		for (final String requiredParameter : requiredParameters) {
+			if (!parameters.containsKey(requiredParameter)) {
+				throw new ProcessingException(
+					"Missing required parameter for step " + getClass().getSimpleName() + ": " +
+					requiredParameter
+				);
+			}
 		}
 
 		for (final Entry<String, String> entry : parameters.entrySet()) {
