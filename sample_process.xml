@@ -57,8 +57,8 @@
 			<pageSize>2147483647</pageSize>
 			<!-- Decrease this for less RAM usage and more accurate progress information -->
 			<documentsPerBatch>64</documentsPerBatch>
-			<cnlpee:seedWordsFilesDirectory>../entityextraction/dictionaries</cnlpee:seedWordsFilesDirectory>
-			<cnlpee:nerMappingsFile>../entityextraction/entities.tsv</cnlpee:nerMappingsFile>
+			<cnlpee:seedWordsFilesDirectory>entityextraction/dictionaries</cnlpee:seedWordsFilesDirectory>
+			<cnlpee:nerMappingsFile>entityextraction/entities.tsv</cnlpee:nerMappingsFile>
 			<cnlpee:overwritableNerCategories>CAUSE_OF_DEATH,IDEOLOGY,PERSON,ORGANIZATION</cnlpee:overwritableNerCategories>
 		</parameters>
 	</step>
@@ -71,6 +71,8 @@
 			<pageSize>2147483647</pageSize>
 			<!-- Decrease this for less RAM usage and more accurate progress information -->
 			<documentsPerBatch>64</documentsPerBatch>
+			<cnlpkbp:nerMappingsFile>entityextraction/entities.tsv</cnlpkbp:nerMappingsFile>
+			<cnlpkbp:baseModelURI>vacbot-kb:/</cnlpkbp:baseModelURI>
 		</parameters>
 	</step>
 
