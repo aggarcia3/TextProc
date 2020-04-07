@@ -314,7 +314,7 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 										final PrintStream stdout = System.out;
 										final PrintStream stderr = System.err;
 										try {
-											// SPIED behaves pollutes standard output no matter what.
+											// SPIED pollutes standard output no matter what.
 											// Avoid that by reassigning the output streams temporarily
 											System.setOut(nullPrintStream);
 											System.setErr(nullPrintStream);
@@ -369,7 +369,10 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 											}
 										}
 									}
-								} catch (final IOException | ReflectiveOperationException | InterruptedException | ExecutionException | SQLException exc) {
+								} catch (
+									final IOException | ReflectiveOperationException |
+									InterruptedException | ExecutionException | SQLException exc
+								) {
 									throw new ProcessingException(DATA_ACCESS_EXCEPTION_MESSAGE, exc);
 								} finally {
 									// Clean up the current temporary sentences file

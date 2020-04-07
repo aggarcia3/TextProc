@@ -398,11 +398,11 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 						if (currentBatch != null) {
 							action.accept(currentBatch);
 						}
-					} catch (final Throwable exc) {
+					} catch (final Exception exc) {
 						// Exceptions thrown by this method get silently discarded.
 						// Handle that by logging them
 						TextProcLogging.getLogger().log(
-							Level.WARNING, "An exception occurred while processing a document. Skipping...", exc
+							Level.WARNING, "An exception occurred while processing a batch of documents. Skipping...", exc
 						);
 					}
 				});
@@ -427,9 +427,9 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 							}
 						}
 					}
-				} catch (final ProcessingException exc) {
+				} catch (final Exception exc) {
 					TextProcLogging.getLogger().log(
-						Level.WARNING, "An exception occurred while processing a document. Skipping...", exc
+						Level.WARNING, "An exception occurred while processing a batch of documents. Skipping...", exc
 					);
 				}
 

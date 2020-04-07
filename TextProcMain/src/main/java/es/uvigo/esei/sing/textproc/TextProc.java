@@ -137,7 +137,7 @@ public final class TextProc {
 				"Process done (" + elapsedTimeString + "). " +
 				"Consider optimizing the processed entity tables for optimal performance. Have a nice day!"
 			);
-		} catch (final Exception exc) {
+		} catch (final Throwable exc) {
 			getAppLogger().log(
 				Level.SEVERE, "An exception has occurred. Aborting program execution.", exc
 			);
