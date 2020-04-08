@@ -8,7 +8,7 @@ import es.uvigo.esei.sing.textproc.step.xml.definition.AbstractProcessingStepPar
 
 /**
  * Parameter for specifying the path to a folder where Apache Jena's TB2 storage
- * engine will store a unnamed dataset containing the knowledge base.
+ * engine will store a dataset containing the knowledge base.
  *
  * @author Alejandro González García
  */
