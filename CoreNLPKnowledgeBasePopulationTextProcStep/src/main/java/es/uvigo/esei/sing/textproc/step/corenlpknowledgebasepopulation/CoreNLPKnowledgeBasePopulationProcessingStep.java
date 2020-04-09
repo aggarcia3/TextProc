@@ -8,13 +8,16 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.NavigableSet;
 import java.util.Properties;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.logging.Level;
 
 import javax.persistence.PersistenceException;
@@ -26,6 +29,7 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.ReifiedStatement;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.tdb2.DatabaseMgr;
 import org.apache.jena.tdb2.TDB2Factory;
 
 import edu.stanford.nlp.coref.CorefProperties.CorefAlgorithmType;
@@ -53,6 +57,7 @@ import es.uvigo.esei.sing.textproc.logging.TextProcLogging;
 import es.uvigo.esei.sing.textproc.step.AbstractProcessingStep;
 import es.uvigo.esei.sing.textproc.step.ProcessingException;
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.BaseModelURIProcessingStepParameter;
+import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.CompactKnowledgeBaseProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.CoreferenceAnimateFileProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.CoreferenceCountriesFileProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.CoreferenceDictionaryListProcessingStepParameter;
@@ -75,6 +80,7 @@ import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.defin
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.POSModelProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.ParserModelProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.SentimentModelProcessingStepParameter;
+import es.uvigo.esei.sing.textproc.step.util.PathUtil;
 import lombok.NonNull;
 
 /**
@@ -119,6 +125,7 @@ final class CoreNLPKnowledgeBasePopulationProcessingStep extends AbstractProcess
 	private static final String NER_PROPERTIES_FILE_STEP_PARAMETER_NAME = new NERPropertiesFileProcessingStepParameter().getName();
 	private static final String OPENIE_PROPERTIES_FILE_STEP_PARAMETER_NAME = new OpenIEPropertiesFileProcessingStepParameter().getName();
 	private static final String KNOWLEDGE_BASE_EXPORT_FILE_STEP_PARAMETER_NAME = new KnowledgeBaseExportFileProcessingStepParameter().getName();
+	private static final String COMPACT_KNOWLEDGE_BASE_STEP_PARAMETER_NAME = new CompactKnowledgeBaseProcessingStepParameter().getName();
 
 	private static final Properties DEFAULT_NER_PROPERTIES;
 	private static final Properties DEFAULT_OPENIE_PROPERTIES;
@@ -185,7 +192,8 @@ final class CoreNLPKnowledgeBasePopulationProcessingStep extends AbstractProcess
 				Map.entry(SENTIMENT_MODEL_PROCESSING_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank()),
 				Map.entry(NER_PROPERTIES_FILE_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank()),
 				Map.entry(OPENIE_PROPERTIES_FILE_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank()),
-				Map.entry(KNOWLEDGE_BASE_EXPORT_FILE_STEP_PARAMETER_NAME, (final String value) -> KnowledgeBaseExportFileProcessingStepParameter.isValid(value))
+				Map.entry(KNOWLEDGE_BASE_EXPORT_FILE_STEP_PARAMETER_NAME, (final String value) -> KnowledgeBaseExportFileProcessingStepParameter.isValid(value)),
+				Map.entry(COMPACT_KNOWLEDGE_BASE_STEP_PARAMETER_NAME, (final String value) -> value != null && !value.isBlank())
 			),
 			// Additional mandatory parameters
 			Set.of()
@@ -360,9 +368,10 @@ final class CoreNLPKnowledgeBasePopulationProcessingStep extends AbstractProcess
 			nlpPipeline.addAnnotator(new OpenIE(openIEProperties));
 
 			// Connect to the Jena dataset and get the RDF triple graph
-			final Dataset jenaDataset = TDB2Factory.connectDataset(
-				getParameters().getOrDefault(JENA_DATASET_FOLDER_STEP_PARAMETER_NAME, "knowledge_base")
+			final String datasetPath = getParameters().getOrDefault(
+				JENA_DATASET_FOLDER_STEP_PARAMETER_NAME, "knowledge_base"
 			);
+			final Dataset jenaDataset = TDB2Factory.connectDataset(datasetPath);
 			final Model tripleGraph = jenaDataset.getNamedModel(baseModelURI.toASCIIString());
 
 			// Clear previous data from the graph
@@ -501,6 +510,59 @@ final class CoreNLPKnowledgeBasePopulationProcessingStep extends AbstractProcess
 				);
 			}
 
+			// Compact the knowledge base if applicable
+			if (
+				CompactKnowledgeBaseProcessingStepParameter.convertValueToBoolean(
+					getParameters().getOrDefault(
+						COMPACT_KNOWLEDGE_BASE_STEP_PARAMETER_NAME, "true"
+					)
+				)
+			) {
+				System.out.println("> Compacting knowledge base...");
+
+				try {
+					DatabaseMgr.compact(jenaDataset.asDatasetGraph());
+
+					final NavigableSet<Path> oldDatasetVersionPaths = new TreeSet<>((final Path a, final Path b) ->
+						// Order versions in ascending order.
+						// The order when comparing paths directly is implementation defined
+						a.getFileName().toString().compareTo(b.getFileName().toString())
+					);
+
+					// Get all the dataset versions
+					try (final DirectoryStream<Path> stream = Files.newDirectoryStream(Path.of(datasetPath), "Data-*")) {
+						for (final Path datasetVersionPath : stream) {
+							oldDatasetVersionPaths.add(datasetVersionPath);
+						}
+					}
+
+					// The last version is the current one
+					oldDatasetVersionPaths.pollLast();
+
+					for (final Path oldDatasetVersionPath : oldDatasetVersionPaths) {
+						// Now delete the old, unused version of the database
+						System.out.println(String.format(
+							"> Deleting old version %s of the knowledge base... This will free ~%d MiB of disk space.",
+							oldDatasetVersionPath.getFileName().toString(),
+							PathUtil.getTotalPathSize(oldDatasetVersionPath) / 1024 / 1024
+						));
+
+						PathUtil.deletePathRecursively(oldDatasetVersionPath);
+					}
+
+					System.out.println("> Old versions of the knowledge base deleted.");
+				} catch (final Exception exc) {
+					// Runtime exceptions can be evil. What if we run out of disk space?
+					TextProcLogging.getLogger().log(
+						Level.WARNING,
+						"An exception occurred while compacting the knowledge base. Please review its consistency before using it",
+						exc
+					);
+				}
+
+				System.out.println("> The knowledge base was compacted.");
+			}
+
 			// Export the knowledge base to a file if needed
 			String knowledgeBaseExportValue = null;
 			if (
@@ -515,11 +577,14 @@ final class CoreNLPKnowledgeBasePopulationProcessingStep extends AbstractProcess
 					knowledgeBaseExportValue
 				);
 
+				System.out.println("> Exporting knowledge base to " + path + "...");
+
 				jenaDataset.begin(ReadWrite.READ);
 				try {
 					tripleGraph.write(Files.newOutputStream(Path.of(path)), format);
-
 					jenaDataset.commit();
+
+					System.out.println("> Knowledge base exported.");
 				} catch (final Exception exc) {
 					// I'm pretty sure that exceptions are thrown if some I/O error occurs.
 					// It is kind of sloppy to wrap everything in a RuntimeException,

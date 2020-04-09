@@ -59,15 +59,16 @@ final class EmptyFilteringProcessingStep extends AbstractProcessingStep {
 		);
 		final Pattern emptyRegex;
 
-		switch (getParameters().getOrDefault(INCLUDE_REDDIT_DELETED_PROCESSING_STEP_PARAMETER_NAME, "true")) {
-		case "true":
-		case "1":
+		if (
+			IncludeRedditDeletedProcessingStepParameter.convertValueToBoolean(
+				getParameters().getOrDefault(INCLUDE_REDDIT_DELETED_PROCESSING_STEP_PARAMETER_NAME, "true")
+			)
+		) {
 			emptyRegex = Pattern.compile(
 				"^[\\[(][\\p{Space}]*(?:removed|deleted|remove|delete)[\\p{Space}]*[\\])]$|^[^\\p{Lower}]*$",
 				Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CHARACTER_CLASS
 			);
-			break;
-		default:
+		} else {
 			emptyRegex = Pattern.compile(
 				"^[^\\p{Lower}]*$",
 				Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CHARACTER_CLASS

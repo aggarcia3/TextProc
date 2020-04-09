@@ -29,4 +29,18 @@ public abstract class AbstractProcessingStepParameter implements ProcessingStepP
 			throw new AssertionError("Missing XmlRootElement annotation");
 		}
 	}
+
+	/**
+	 * Converts the value of a parameter to a boolean value. Currently, the value is
+	 * assumed to be {@code true} if and only if it equals the strings "true" or
+	 * "1", ignoring case differences. Therefore, a {@code null} value is treated as
+	 * {@code false}.
+	 *
+	 * @param value The value for the processing step parameter.
+	 * @return The value of the processing step parameter, converted to a boolean
+	 *         value.
+	 */
+	public static boolean convertValueToBoolean(final String value) {
+		return "true".equalsIgnoreCase(value) || "1".equals(value);
+	}
 }

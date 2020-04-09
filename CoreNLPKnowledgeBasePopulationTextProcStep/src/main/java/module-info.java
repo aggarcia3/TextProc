@@ -7,7 +7,7 @@
  * <p>
  * This step is considerably memory intensive, requiring a maximum Java heap
  * size of at least 6 GiB on Debian Bullseye x86_64 OpenJDK 11. The exact figure
- * may vary depending on the Java version and JVM implementation.
+ * may vary depending on the Java version, JVM implementation, models and corpus.
  * </p>
  *
  * @author Alejandro González García

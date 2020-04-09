@@ -8,6 +8,7 @@ import es.uvigo.esei.sing.textproc.entity.ProcessedDocument;
 import es.uvigo.esei.sing.textproc.step.AbstractProcessingStep;
 import es.uvigo.esei.sing.textproc.step.ProcessingStepService;
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.BaseModelURIProcessingStepParameter;
+import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.CompactKnowledgeBaseProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.CoreferenceAnimateFileProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.CoreferenceCountriesFileProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition.CoreferenceDictionaryListProcessingStepParameter;
@@ -67,7 +68,7 @@ public final class CoreNLPKnowledgeBasePopulationProcessingStepService implement
 			CoreferenceDictionaryPMIProcessingStepParameter.class, CoreferenceSignaturesProcessingStepParameter.class,
 			CoreferenceWordCountsProcessingStepParameter.class, SentimentModelProcessingStepParameter.class,
 			NERPropertiesFileProcessingStepParameter.class, OpenIEPropertiesFileProcessingStepParameter.class,
-			KnowledgeBaseExportFileProcessingStepParameter.class
+			KnowledgeBaseExportFileProcessingStepParameter.class, CompactKnowledgeBaseProcessingStepParameter.class
 		);
 	}
 }

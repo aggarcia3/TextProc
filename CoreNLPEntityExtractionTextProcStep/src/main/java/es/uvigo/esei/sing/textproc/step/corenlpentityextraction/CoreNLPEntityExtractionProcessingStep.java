@@ -11,13 +11,10 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.sql.SQLException;
 import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.ArrayList;
@@ -58,7 +55,7 @@ import es.uvigo.esei.sing.textproc.step.corenlpentityextraction.xml.definition.O
 import es.uvigo.esei.sing.textproc.step.corenlpentityextraction.xml.definition.PropertiesFileProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.corenlpentityextraction.xml.definition.SeedWordsDirectoryProcessingStepParameter;
 import es.uvigo.esei.sing.textproc.step.util.VariableHolder;
-import lombok.NonNull;
+import es.uvigo.esei.sing.textproc.step.util.PathUtil;
 
 /**
  * Extracts new named entities from the input documents, from a seed set of
@@ -151,7 +148,7 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 				final Path temporaryProcessingDirectory = Files.createTempDirectory("TP_CEES");
 				Runtime.getRuntime().addShutdownHook(new Thread(() -> {
 					// Just in case the user interrupts us, or we never manage to reach the finally
-					deletePathRecursively(temporaryProcessingDirectory);
+					PathUtil.deletePathRecursively(temporaryProcessingDirectory);
 				}));
 
 				try (final PropertyWithTemporaryFiles seedWordsFilesProperty = NamedEntityDictionaryHelper.namedEntitiesToSeedWordsFilesProperty(labelTerms)) {
@@ -388,46 +385,11 @@ final class CoreNLPEntityExtractionProcessingStep extends AbstractProcessingStep
 					}
 				} finally {
 					// Remove temporary files directory
-					deletePathRecursively(temporaryProcessingDirectory);
+					PathUtil.deletePathRecursively(temporaryProcessingDirectory);
 				}
 			}
 		} catch (final IOException | IllegalArgumentException | PersistenceException exc) {
 			throw new ProcessingException(DATA_ACCESS_EXCEPTION_MESSAGE, exc);
 		}
-	}
-
-	/**
-	 * Attempts a best effort to clean up the file tree whose root is at the
-	 * specified path (that is, all the files and directories inside a directory,
-	 * like {@code rm -rf} does on Unix systems). Any I/O error that occurs is
-	 * silently discarded.
-	 *
-	 * @param root The root location of file system (sub)tree that will be deleted.
-	 * @throws IllegalArgumentException If {@code root} is {@code null}.
-	 */
-	private static void deletePathRecursively(@NonNull final Path root) {
-		try {
-			Files.walkFileTree(root, new SimpleFileVisitor<Path>() {
-				@Override
-				public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs) throws IOException {
-					// Delete files that are not directories.
-					// Ignore that the file doesn't exist, because another process deleted it
-					// or whatever
-					if (!Files.isDirectory(file)) {
-						Files.deleteIfExists(file);
-					}
-
-					return FileVisitResult.CONTINUE;
-				}
-
-				@Override
-				public FileVisitResult postVisitDirectory(final Path dir, final IOException exc) throws IOException {
-					// Delete the directory itself after its entries are deleted
-					Files.deleteIfExists(dir);
-
-					return FileVisitResult.CONTINUE;
-				}
-			});
-		} catch (final IOException ignored) {}
 	}
 }
