@@ -208,11 +208,11 @@ final class CoreNLPKnowledgeBasePopulationProcessingStep extends AbstractProcess
 
 		try {
 			final URI baseModelURI = new URI(
-				getParameters().getOrDefault(BASE_MODEL_URI_STEP_PARAMETER_NAME, "textproc-kb:/")
+				getParameters().getOrDefault(BASE_MODEL_URI_STEP_PARAMETER_NAME, "textprockb:/")
 			);
 			final UriBuilder baseEntityUriBuilder = UriBuilder.fromUri(baseModelURI.resolve("entity"));
 			final UriBuilder basePropertyUriBuilder = UriBuilder.fromUri(baseModelURI.resolve("property"));
-			final UriBuilder baseDocumentTypeUriBuilder = UriBuilder.fromUri(baseModelURI.resolve("document-type"));
+			final UriBuilder baseDocumentTypeUriBuilder = UriBuilder.fromUri(baseModelURI.resolve("documenttype"));
 
 			// First, set up the CoreNLP pipeline.
 			// Here we really use the library (and hardware that executes this) to its full potential :)
@@ -388,16 +388,16 @@ final class CoreNLPKnowledgeBasePopulationProcessingStep extends AbstractProcess
 				basePropertyUriBuilder.fragment("confidence").build().toASCIIString()
 			);
 			final Property sentimentClassProperty = tripleGraph.createProperty(
-				basePropertyUriBuilder.fragment("sentiment-class").build().toASCIIString()
+				basePropertyUriBuilder.fragment("sentimentclass").build().toASCIIString()
 			);
 			final Property documentTypeProperty = tripleGraph.createProperty(
-				basePropertyUriBuilder.fragment("document-type").build().toASCIIString()
+				basePropertyUriBuilder.fragment("documenttype").build().toASCIIString()
 			);
 			final Property documentIdProperty = tripleGraph.createProperty(
-				basePropertyUriBuilder.fragment("document-id").build().toASCIIString()
+				basePropertyUriBuilder.fragment("documentid").build().toASCIIString()
 			);
 			final Property documentSentenceNumberProperty = tripleGraph.createProperty(
-				basePropertyUriBuilder.fragment("document-sentence-number").build().toASCIIString()
+				basePropertyUriBuilder.fragment("documentsentencenumber").build().toASCIIString()
 			);
 
 			for (int i = 0; i < unprocessedDocumentTypesNames.size(); ++i) {
