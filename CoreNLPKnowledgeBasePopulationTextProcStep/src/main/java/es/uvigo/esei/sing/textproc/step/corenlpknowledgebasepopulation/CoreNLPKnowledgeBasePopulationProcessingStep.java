@@ -208,7 +208,7 @@ final class CoreNLPKnowledgeBasePopulationProcessingStep extends AbstractProcess
 
 		try {
 			final URI baseModelURI = new URI(
-				getParameters().getOrDefault(BASE_MODEL_URI_STEP_PARAMETER_NAME, "textprockb:/")
+				getParameters().getOrDefault(BASE_MODEL_URI_STEP_PARAMETER_NAME, "textproc:/kb")
 			);
 			final UriBuilder baseEntityUriBuilder = UriBuilder.fromUri(baseModelURI.resolve("entity"));
 			final UriBuilder basePropertyUriBuilder = UriBuilder.fromUri(baseModelURI.resolve("property"));
