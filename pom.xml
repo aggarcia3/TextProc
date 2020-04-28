@@ -186,7 +186,7 @@
 			</dependency>
 			<!-- Required by Jena TDB2 -->
 			<dependency>
-				<groupId>com.github.jsonld-java</groupId>
+				<groupId>com.github.jsonld-java.jsonld-java</groupId>
 				<artifactId>jsonld-java</artifactId>
 				<version>0.13.0</version>
 				<exclusions>

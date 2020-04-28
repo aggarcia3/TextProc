@@ -34,7 +34,7 @@
 		</dependency>
 		<!-- We want to handle this Jena TDB2 dependency ourselves. See below -->
 		<dependency>
-			<groupId>com.github.jsonld-java</groupId>
+			<groupId>com.github.jsonld-java.jsonld-java</groupId>
 			<artifactId>jsonld-java</artifactId>
 		</dependency>
 		<!-- For UriBuilder -->
