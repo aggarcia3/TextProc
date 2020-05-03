@@ -55,7 +55,6 @@
 		<!-- Modified third party libraries -->
 		<module>lucene-shaded</module>
 		<module>ejml-shaded</module>
-		<module>stanford-corenlp</module>
 	</modules>
 
 	<properties>
@@ -82,8 +81,10 @@
 				<artifactId>hibernate-c3p0</artifactId>
 				<version>5.4.12.Final</version>
 			</dependency>
-			<!-- Hibernate bundles an old JAXB version. Use the most recent JAXB implementation 
-				instead, if either JAXB or Hibernate are declared as dependencies in a submodule -->
+			<!--
+				Hibernate bundles an old JAXB version. Use the most recent JAXB implementation instead,
+				if either JAXB or Hibernate are declared as dependencies in a submodule
+			-->
 			<dependency>
 				<groupId>javax.xml.bind</groupId>
 				<artifactId>jaxb-api</artifactId>
@@ -210,7 +211,7 @@
 				<artifactId>lombok</artifactId>
 				<version>${textproc.lombok.version}</version>
 				<!-- Needed during runtime for Java 11 -->
-				<!--<scope>provided</scope> -->
+				<!--<scope>provided</scope>-->
 			</dependency>
 			<dependency>
 				<groupId>org.mapstruct</groupId>
@@ -343,11 +344,6 @@
 						<encoding>UTF-8</encoding>
 						<source>${textproc.java.version}</source>
 						<target>${textproc.java.version}</target>
-						<fork>true</fork>
-						<compilerArgs>
-							<!-- Needed for Stanford CoreNLP to compile on all platforms -->
-							<compilerArg>-J-Xss8M</compilerArg>
-						</compilerArgs>
 						<annotationProcessorPaths>
 							<annotationProcessorPath>
 								<groupId>org.projectlombok</groupId>
