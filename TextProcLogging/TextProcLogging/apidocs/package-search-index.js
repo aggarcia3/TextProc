@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"m":"es.uvigo.esei.sing.textproc.logging","l":"es.uvigo.esei.sing.textproc.logging"}]

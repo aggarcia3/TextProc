@@ -1,0 +1,4 @@
+module:es.uvigo.esei.sing.textproc.step.corenlplemmatization
+es.uvigo.esei.sing.textproc.step.corenlplemmatization
+es.uvigo.esei.sing.textproc.step.corenlplemmatization.entity
+es.uvigo.esei.sing.textproc.step.corenlplemmatization.xml.definition

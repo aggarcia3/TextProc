@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"es.uvigo.esei.sing.textproc.step.tpptokenization","l":"TppTokenizationProcessingStepService"},{"p":"es.uvigo.esei.sing.textproc.step.tpptokenization.entity","l":"TppTokenizedTextDocument"},{"p":"es.uvigo.esei.sing.textproc.step.tpptokenization.entity","l":"TppTokenizedTextWithTitleDocument"}]
