@@ -13,6 +13,7 @@
 	<artifactId>CoreNLPTokenizationTextProcStep</artifactId>
 
 	<name>CoreNLPTokenizationTextProcStep</name>
+	<description>Processing step for TextProc that tokenizes its input documents via Stanford CoreNLP.</description>
 
 	<dependencies>
 		<dependency>

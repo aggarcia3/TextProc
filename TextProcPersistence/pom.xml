@@ -13,6 +13,7 @@
 	<artifactId>TextProcPersistence</artifactId>
 
 	<name>TextProcPersistence</name>
+	<description>The TextProc persistence access layer, using Java Persistence API.</description>
 
 	<properties>
 		<textproc.hibernate.jpa.pu>${project.artifactId}</textproc.hibernate.jpa.pu>

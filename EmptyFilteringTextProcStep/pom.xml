@@ -13,6 +13,7 @@
 	<artifactId>EmptyFilteringTextProcStep</artifactId>
 
 	<name>EmptyFilteringTextProcStep</name>
+	<description>Processing step for TextProc that doesn't copy as processed documents the input documents which are empty of meaning.</description>
 
 	<dependencies>
 		<dependency>

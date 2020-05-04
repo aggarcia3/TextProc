@@ -13,6 +13,7 @@
 	<artifactId>AbstractTppTextProcStep</artifactId>
 
 	<name>AbstractTppTextProcStep</name>
+	<description>This module provides a skeletal implementation of a TextProc processing step in the form of an abstract class, to keep code DRY and consistent between steps.</description>
 
 	<dependencies>
 		<dependency>

@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import edu.stanford.nlp.io.IOUtils;
 import edu.stanford.nlp.patterns.GetPatternsFromDataMultiClass;
 import edu.stanford.nlp.pipeline.NERCombinerAnnotator;
+import edu.stanford.nlp.pipeline.TokensRegexNERAnnotator;
 import es.uvigo.esei.sing.textproc.step.xml.definition.AbstractProcessingStepParameter;
 
 /**

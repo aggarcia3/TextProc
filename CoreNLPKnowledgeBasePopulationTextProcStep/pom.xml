@@ -13,6 +13,7 @@
 	<artifactId>CoreNLPKnowledgeBasePopulationTextProcStep</artifactId>
 
 	<name>CoreNLPKnowledgeBasePopulationTextProcStep</name>
+	<description>Processing step for TextProc that populates a knowledge base stored in Apache Jena's TDB2 format, using the NER, OpenIE and sentiment annotation facilities included with CoreNLP.</description>
 
 	<dependencies>
 		<dependency>

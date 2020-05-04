@@ -13,6 +13,7 @@
 	<artifactId>TextProcStep</artifactId>
 
 	<name>TextProcStep</name>
+	<description>The TextProc processing step API.</description>
 
 	<dependencies>
 		<dependency>

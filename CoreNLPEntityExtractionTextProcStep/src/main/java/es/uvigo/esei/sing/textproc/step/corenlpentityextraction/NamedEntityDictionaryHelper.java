@@ -189,14 +189,15 @@ final class NamedEntityDictionaryHelper {
 	 * further processing. The seed words files specified in the property will be
 	 * created in the temporary directory reported by the operating system, and
 	 * should be cleaned up when they are no longer necessary by calling
-	 * {@link PropertyWithTemporaryFiles#close()} explicitly or implicitly (for
-	 * instance, in a try-with-resources block).
+	 * {@link es.uvigo.esei.sing.textproc.step.corenlpentityextraction.NamedEntityDictionaryHelper.PropertyWithTemporaryFiles#close()}
+	 * explicitly or implicitly (for instance, in a try-with-resources block).
 	 *
 	 * @param labelTerms The map that associates named entity type labels with its
 	 *                   terms, as returned by
 	 *                   {@link #namedEntitiesFromPathChildren(Path)}.
 	 * @return The property to pass to SPIED, whose value can be retrieved by
-	 *         calling {@link PropertyWithTemporaryFiles#getValue()}.
+	 *         calling
+	 *         {@link es.uvigo.esei.sing.textproc.step.corenlpentityextraction.NamedEntityDictionaryHelper.PropertyWithTemporaryFiles#getValue()}.
 	 * @throws IOException              If some I/O error occurs during the
 	 *                                  operation.
 	 * @throws IllegalArgumentException If {@code labelTerms} is {@code null}.

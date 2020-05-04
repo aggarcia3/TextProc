@@ -13,6 +13,7 @@
 	<artifactId>CoreNLPLemmatizationTextProcStep</artifactId>
 
 	<name>CoreNLPLemmatizationTextProcStep</name>
+	<description>Processing step for TextProc that lemmatizes each token of its input documents via Stanford CoreNLP.</description>
 
 	<dependencies>
 		<dependency>

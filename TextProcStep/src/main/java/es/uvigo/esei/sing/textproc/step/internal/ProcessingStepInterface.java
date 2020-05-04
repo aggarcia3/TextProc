@@ -7,7 +7,7 @@ import java.util.Map;
 import es.uvigo.esei.sing.textproc.step.ProcessingException;
 
 /**
- * Interface that defines the contract common to every processing step. THis
+ * Interface that defines the contract common to every processing step. This
  * provides indirection, should the abstract classes in this module that
  * implement this interface change.
  *

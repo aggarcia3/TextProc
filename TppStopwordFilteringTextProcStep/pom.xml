@@ -13,6 +13,7 @@
 	<artifactId>TppStopwordFilteringTextProcStep</artifactId>
 
 	<name>TppStopwordFilteringTextProcStep</name>
+	<description>Processing step for TextProc that removes stopwords from the input documents, via Text Processing Python.</description>
 
 	<dependencies>
 		<dependency>

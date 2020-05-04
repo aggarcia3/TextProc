@@ -13,6 +13,7 @@
 	<artifactId>CoreNLPEntityExtractionTextProcStep</artifactId>
 
 	<name>CoreNLPEntityExtractionTextProcStep</name>
+	<description>Processing step for TextProc that extracts new named entities from documents, from seed sets of entities, using bootstrapped pattern-based learning.</description>
 
 	<dependencies>
 		<dependency>

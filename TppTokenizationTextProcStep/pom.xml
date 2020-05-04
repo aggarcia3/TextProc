@@ -13,6 +13,7 @@
 	<artifactId>TppTokenizationTextProcStep</artifactId>
 
 	<name>TppTokenizationTextProcStep</name>
+	<description>Processing step for TextProc that tokenizes its input documents via Text Processing Python.</description>
 
 	<dependencies>
 		<dependency>

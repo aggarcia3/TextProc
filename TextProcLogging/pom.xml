@@ -13,4 +13,5 @@
 	<artifactId>TextProcLogging</artifactId>
 
 	<name>TextProcLogging</name>
+	<description>The TextProc logging facilities.</description>
 </project>

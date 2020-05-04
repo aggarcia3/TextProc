@@ -9,6 +9,9 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>TextProcApplication</name>
+	<description>TextProc is an automated text processing tool that efficiently and flexibly applies NLP to input documents in a relational database.</description>
+
+	<url>https://aggarcia3.github.io/TextProc</url>
 
 	<scm>
 		<url>https://github.com/aggarcia3/TextProc</url>
@@ -31,6 +34,16 @@
 			<url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
 		</license>
 	</licenses>
+
+	<ciManagement>
+		<system>GitHub Actions</system>
+		<url>https://github.com/aggarcia3/TextProc/actions</url>
+	</ciManagement>
+
+	<issueManagement>
+		<system>GitHub issues</system>
+		<url>https://github.com/aggarcia3/TextProc/issues</url>
+	</issueManagement>
 
 	<modules>
 		<!-- Core submodules -->
@@ -406,8 +419,34 @@
 					<version>3.0.0-M1</version>
 				</plugin>
 				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.2.0</version>
+					<!-- Run as "mvn install javadoc:javadoc". See: https://issues.apache.org/jira/browse/MJAVADOC-622 -->
+					<configuration>
+						<!-- Fix Maven not being able to find javadoc in anything other than Windows -->
+						<javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+						<show>package</show>
+						<encoding>UTF-8</encoding>
+						<!-- This doesn't play nice with some dependencies -->
+						<detectJavaApiLink>false</detectJavaApiLink>
+						<linksource>true</linksource>
+						<detectLinks>true</detectLinks>
+						<quiet>true</quiet>
+						<bottom>Copyleft &#x1f12f; Alejandro González García</bottom>
+						<skippedModules>lucene-shaded,ejml-shaded</skippedModules>
+					</configuration>
+				</plugin>
+				<!--
+					To avoid weird bugs with Maven, run "mvn install site site:stage -pl '!lucene-shaded'"
+					to generate the site, and put the result at target/staging in the gh-pages branch.
+				-->
+				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
 					<version>3.8.2</version>
+					<configuration>
+						<inputEncoding>UTF-8</inputEncoding>
+						<locales>en,es</locales>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
@@ -442,4 +481,47 @@
 			</resource>
 		</resources>
 	</build>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<!-- Fix Maven not being able to find javadoc -->
+					<javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+					<show>package</show>
+					<encoding>UTF-8</encoding>
+					<!-- This doesn't play nice with some dependencies -->
+					<detectJavaApiLink>false</detectJavaApiLink>
+					<linksource>true</linksource>
+					<detectLinks>true</detectLinks>
+					<quiet>true</quiet>
+					<bottom>Copyleft &#x1f12f; Alejandro González García</bottom>
+					<skippedModules>lucene-shaded,ejml-shaded</skippedModules>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<id>aggregate</id>
+						<inherited>false</inherited>
+						<reports>
+							<report>aggregate</report>
+						</reports>
+					</reportSet>
+					<reportSet>
+						<id>default</id>
+						<reports>
+							<report>javadoc</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<distributionManagement>
+		<site>
+			<id>site</id>
+			<url>${project.url}</url>
+		</site>
+	</distributionManagement>
 </project>

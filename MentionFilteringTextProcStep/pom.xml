@@ -13,6 +13,7 @@
 	<artifactId>MentionFilteringTextProcStep</artifactId>
 
 	<name>MentionFilteringTextProcStep</name>
+	<description>Processing step for TextProc that removes Reddit mentions from the input documents.</description>
 
 	<dependencies>
 		<dependency>

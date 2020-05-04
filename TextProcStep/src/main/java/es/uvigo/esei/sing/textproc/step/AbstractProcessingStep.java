@@ -667,7 +667,6 @@ public abstract class AbstractProcessingStep implements ProcessingStepInterface 
 		 * Performs the processing operation on the given argument.
 		 *
 		 * @param t The input argument.
-		 * @see TransactionalMethod
 		 */
 		public void accept(final T t) throws ProcessingException;
 	}

@@ -13,6 +13,7 @@
 	<artifactId>TppLemmatizationTextProcStep</artifactId>
 
 	<name>TppLemmatizationTextProcStep</name>
+	<description>Processing step for TextProc that lemmatizes the input document tokens, separated by spaces.</description>
 
 	<dependencies>
 		<dependency>

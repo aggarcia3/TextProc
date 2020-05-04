@@ -4,6 +4,7 @@ package es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.defi
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import edu.stanford.nlp.pipeline.TokensRegexNERAnnotator;
 import es.uvigo.esei.sing.textproc.step.xml.definition.AbstractProcessingStepParameter;
 
 /**

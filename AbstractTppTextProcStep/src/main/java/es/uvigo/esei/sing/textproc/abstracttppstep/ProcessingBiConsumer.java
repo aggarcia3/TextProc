@@ -22,7 +22,7 @@ public interface ProcessingBiConsumer<T, U> {
 	 * Performs the processing operation on the given arguments.
 	 *
 	 * @param t The first input argument.
-	 * @param t The second input argument.
+	 * @param u The second input argument.
 	 */
 	public void accept(final T t, final U u) throws ProcessingException;
 }

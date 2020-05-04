@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 http://maven.apache.org/xsd/decoration-1.8.0.xsd"
+	name="${project.name}">
+
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-fluido-skin</artifactId>
+		<version>1.9</version>
+	</skin>
+
+	<body>
+		<menu ref="reports"/>
+		<menu ref="parent"/>
+		<menu ref="modules"/>
+
+		<footer>Copyleft &#x1f12f; Alejandro González García</footer>
+	</body>
+
+	<custom>
+		<fluidoSkin>
+			<navBarStyle>navbar-inverse</navBarStyle>
+			<sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+
+			<googleSearch/>
+
+			<gitHub>
+				<projectId>aggarcia3/TextProc</projectId>
+				<ribbonOrientation>right</ribbonOrientation>
+				<ribbonColor>green</ribbonColor>
+			</gitHub>
+		</fluidoSkin>
+	</custom>
+</project>

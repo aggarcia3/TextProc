@@ -21,11 +21,15 @@ module es.uvigo.esei.sing.textproc.main {
 
 	uses es.uvigo.esei.sing.textproc.step.ProcessingStepService;
 
-	// Bundled processing steps (optional)
+	// Bundled processing steps (needed for Javadoc generation)
 	requires es.uvigo.esei.sing.textproc.step.tpptokenization;
+	requires es.uvigo.esei.sing.textproc.step.corenlptokenization;
 	requires es.uvigo.esei.sing.textproc.step.tppstopwordfiltering;
 	requires es.uvigo.esei.sing.textproc.step.tpplemmatization;
+	requires es.uvigo.esei.sing.textproc.step.corenlplemmatization;
 	requires es.uvigo.esei.sing.textproc.step.mentionfiltering;
 	requires es.uvigo.esei.sing.textproc.step.emptyfiltering;
 	requires es.uvigo.esei.sing.textproc.step.luceneindex;
+	requires es.uvigo.esei.sing.textproc.step.corenlpentityextraction;
+	requires es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation;
 }

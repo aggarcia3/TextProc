@@ -80,8 +80,6 @@ final class TppLemmatizationProcessingStep extends AbstractTppProcessingStep {
 
 	/**
 	 * Adds the language model algorithm parameter to the generated JSON request.
-	 * The object who instantiates this class must call
-	 * {@link #setStep(TppLemmatizationProcessingStep)} ASAP.
 	 *
 	 * @author Alejandro González García
 	 */

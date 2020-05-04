@@ -77,8 +77,7 @@ final class TppStopwordFilteringProcessingStep extends AbstractTppProcessingStep
 
 	/**
 	 * Adds the stopword filtering algorithm parameters to the generated JSON
-	 * request. The object who instantiates this class must call
-	 * {@link #setStep(TppStopwordFilteringProcessingStep)} ASAP.
+	 * request.
 	 *
 	 * @author Alejandro González García
 	 */

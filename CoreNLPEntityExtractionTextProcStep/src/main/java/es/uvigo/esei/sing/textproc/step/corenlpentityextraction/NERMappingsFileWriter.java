@@ -15,6 +15,7 @@ import java.util.concurrent.SynchronousQueue;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 
+import edu.stanford.nlp.pipeline.TokensRegexNERAnnotator;
 import es.uvigo.esei.sing.textproc.step.util.VariableHolder;
 import lombok.NonNull;
 

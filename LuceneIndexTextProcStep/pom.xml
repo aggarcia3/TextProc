@@ -13,6 +13,7 @@
 	<artifactId>LuceneIndexTextProcStep</artifactId>
 
 	<name>LuceneIndexTextProcStep</name>
+	<description>Processing step for TextProc that builds a Lucene index for the input documents.</description>
 
 	<dependencies>
 		<dependency>

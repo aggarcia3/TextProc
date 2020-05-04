@@ -12,6 +12,7 @@
 
 	<artifactId>TextProcMain</artifactId>
 	<name>TextProcMain</name>
+	<description>The TextProc main and entity classes module.</description>
 
 	<dependencies>
 		<dependency>

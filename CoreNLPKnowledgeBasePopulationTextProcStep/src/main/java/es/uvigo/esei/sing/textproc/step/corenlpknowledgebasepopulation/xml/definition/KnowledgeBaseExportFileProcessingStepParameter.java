@@ -63,7 +63,7 @@ public final class KnowledgeBaseExportFileProcessingStepParameter extends Abstra
 	 * @param value The value for this processing step parameter.
 	 * @return The path component of this value, that represents the path to the
 	 *         exported knowledge base.
-	 * @throws IllegalArgumentException If {@value} is not valid.
+	 * @throws IllegalArgumentException If {@code value} is not valid.
 	 */
 	public static String getPathFromValue(final String value) {
 		if (!isValid(value)) {
@@ -81,7 +81,7 @@ public final class KnowledgeBaseExportFileProcessingStepParameter extends Abstra
 	 * @return The path component of this value, that represents the format of the
 	 *         exported knowledge base file. For available formats, see the Apache
 	 *         Jena {@link Lang} class.
-	 * @throws IllegalArgumentException If {@value} is not valid.
+	 * @throws IllegalArgumentException If {@code value} is not valid.
 	 */
 	public static String getFormatFromValue(final String value) {
 		if (!isValid(value)) {
