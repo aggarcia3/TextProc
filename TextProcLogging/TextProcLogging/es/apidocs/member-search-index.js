@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"es.uvigo.esei.sing.textproc.logging","c":"TextProcLogging","l":"getLogger()"},{"p":"es.uvigo.esei.sing.textproc.logging","c":"TextProcLogging","l":"initialize(String)","url":"initialize(java.lang.String)"},{"p":"es.uvigo.esei.sing.textproc.logging","c":"TextProcLogging","l":"TextProcLogging()","url":"%3Cinit%3E()"}]

@@ -1,0 +1,9 @@
+es/uvigo/esei/sing/textproc/step/tpplemmatization/TppLemmatizationProcessingStep$AddModelParameterAction.class
+es/uvigo/esei/sing/textproc/step/tpplemmatization/TppLemmatizationProcessingStep$LemmatizedAttributeStoreAction.class
+module-info.class
+es/uvigo/esei/sing/textproc/step/tpplemmatization/TppLemmatizationProcessingStep.class
+es/uvigo/esei/sing/textproc/step/tpplemmatization/TppLemmatizationProcessingStepService.class
+es/uvigo/esei/sing/textproc/step/tpplemmatization/xml/definition/package-info.class
+es/uvigo/esei/sing/textproc/step/tpplemmatization/xml/definition/ModelProcessingStepParameter.class
+es/uvigo/esei/sing/textproc/step/tpplemmatization/entity/TppLemmatizedTextDocument.class
+es/uvigo/esei/sing/textproc/step/tpplemmatization/entity/TppLemmatizedTextWithTitleDocument.class

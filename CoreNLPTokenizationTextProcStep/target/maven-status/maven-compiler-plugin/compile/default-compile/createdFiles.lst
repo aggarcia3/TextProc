@@ -1,0 +1,8 @@
+es/uvigo/esei/sing/textproc/step/corenlptokenization/entity/CoreNLPTokenizedTextDocument.class
+module-info.class
+es/uvigo/esei/sing/textproc/step/corenlptokenization/CoreNLPTokenizationProcessingStepService.class
+es/uvigo/esei/sing/textproc/step/corenlptokenization/xml/definition/package-info.class
+es/uvigo/esei/sing/textproc/step/corenlptokenization/entity/CoreNLPTokenizedTextWithTitleDocument.class
+es/uvigo/esei/sing/textproc/step/corenlptokenization/CoreNLPTokenizationProcessingStep.class
+es/uvigo/esei/sing/textproc/step/corenlptokenization/xml/definition/LanguageProcessingStepParameter.class
+es/uvigo/esei/sing/textproc/step/corenlptokenization/xml/definition/TokenizerOptionsProcessingStepParameter.class

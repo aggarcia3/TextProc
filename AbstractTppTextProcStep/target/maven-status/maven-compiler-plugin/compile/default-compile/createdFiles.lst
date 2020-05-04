@@ -1,0 +1,8 @@
+es/uvigo/esei/sing/textproc/abstracttppstep/TppHelper.class
+es/uvigo/esei/sing/textproc/abstracttppstep/xml/definition/EndpointProcessingStepParameter.class
+module-info.class
+es/uvigo/esei/sing/textproc/abstracttppstep/xml/definition/package-info.class
+es/uvigo/esei/sing/textproc/abstracttppstep/AbstractTppProcessingStepService.class
+es/uvigo/esei/sing/textproc/abstracttppstep/ProcessingBiConsumer.class
+es/uvigo/esei/sing/textproc/abstracttppstep/JsonResponseAttributeType.class
+es/uvigo/esei/sing/textproc/abstracttppstep/AbstractTppProcessingStep.class

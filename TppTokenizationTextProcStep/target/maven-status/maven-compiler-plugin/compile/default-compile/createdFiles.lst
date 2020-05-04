@@ -1,0 +1,7 @@
+es/uvigo/esei/sing/textproc/step/tpptokenization/TppTokenizationProcessingStepService.class
+es/uvigo/esei/sing/textproc/step/tpptokenization/entity/TppTokenizedTextDocument.class
+es/uvigo/esei/sing/textproc/step/tpptokenization/TppTokenizationProcessingStep.class
+module-info.class
+es/uvigo/esei/sing/textproc/step/tpptokenization/TppTokenizationProcessingStep$TokenStoreAction.class
+es/uvigo/esei/sing/textproc/step/tpptokenization/entity/TppTokenizedTextWithTitleDocument.class
+es/uvigo/esei/sing/textproc/step/tpptokenization/entity/package-info.class

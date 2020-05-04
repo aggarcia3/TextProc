@@ -1,0 +1,55 @@
+/usr/lib/jvm/java-14-openjdk-amd64/bin/javadoc
+@options
+@packages
+@argfile
+--class-path
+'/home/alejandro/.m2/repository/org/mapstruct/mapstruct-processor/1.3.1.Final/mapstruct-processor-1.3.1.Final.jar:/home/alejandro/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0-M1/junit-jupiter-api-5.7.0-M1.jar:/home/alejandro/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/alejandro/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/alejandro/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0-M1/junit-platform-commons-1.7.0-M1.jar'
+--module-path
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/TextProcLogging-1.0.0-SNAPSHOT.jar:/home/alejandro/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar'
+--patch-module
+es.uvigo.esei.sing.textproc.logging='/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/src/main/java:/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/generated-sources/annotations'
+-encoding
+'UTF-8'
+-package
+-quiet
+--module-source-path
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/src'
+-author
+-bottom
+'Copyleft 🄯 Alejandro González García'
+-charset
+'UTF-8'
+-d
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'TextProcLogging 1.0.0-SNAPSHOT API'
+-linksource
+-use
+-version
+-windowtitle
+'TextProcLogging 1.0.0-SNAPSHOT API'
+es.uvigo.esei.sing.textproc.logging
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/src/main/java/module-info.java'
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/allclasses-index.html = 1588622774363
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/allpackages-index.html = 1588622774366
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/constant-values.html = 1588622774302
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/deprecated-list.html = 1588622774332
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/element-list = 1588622774234
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/help-doc.html = 1588622774378
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/index-all.html = 1588622774356
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/index.html = 1588622774372
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/member-search-index.js = 1588622774353
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/member-search-index.zip = 1588622774354
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/module-search-index.js = 1588622774346
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/module-search-index.zip = 1588622774348
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/overview-tree.html = 1588622774324
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/package-search-index.js = 1588622774349
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/package-search-index.zip = 1588622774350
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/script.js = 1588622774383
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/search.js = 1588622774384
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/stylesheet.css = 1588622774381
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/system-properties.html = 1588622774369
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/type-search-index.js = 1588622774351
+/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/site/es/apidocs/type-search-index.zip = 1588622774352

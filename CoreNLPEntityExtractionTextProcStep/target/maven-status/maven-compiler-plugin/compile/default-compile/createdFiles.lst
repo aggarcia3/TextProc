@@ -1,0 +1,15 @@
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NamedEntityDictionaryHelper$DictionaryFileFields.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NamedEntityDictionaryHelper$1.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NERMappingsFileWriter$MappingsFileFields.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NamedEntityDictionaryHelper$PropertyWithTemporaryFiles.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/CoreNLPEntityExtractionProcessingStep.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NamedEntityDictionaryHelper$NamedEntityTerm.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/CoreNLPEntityExtractionProcessingStepService.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/NERMappingsFileStepParameter.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/package-info.class
+module-info.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/OverwritableNERCategoriesStepParameter.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NamedEntityDictionaryHelper.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/PropertiesFileProcessingStepParameter.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/SeedWordsDirectoryProcessingStepParameter.class
+es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NERMappingsFileWriter.class

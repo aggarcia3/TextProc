@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://textproc.sing.esei.uvigo.es/ProcessingProcess"
+	xmlns:tns="http://textproc.sing.esei.uvigo.es/ProcessingProcess"
+	elementFormDefault="qualified">
+
+	<element name="process">
+		<complexType mixed="false">
+			<sequence maxOccurs="unbounded">
+				<element name="step" type="tns:stepType"/>
+			</sequence>
+			<attribute name="version" type="tns:naturalInteger" use="required"/>
+		</complexType>
+	</element>
+
+	<complexType name="stepType" mixed="false">
+		<sequence minOccurs="0" maxOccurs="unbounded">
+			<element name="parameters" type="tns:stepParameters"/>
+		</sequence>
+		<attribute name="action" type="tns:nonEmptyString" use="required"/>
+	</complexType>
+
+	<complexType name="stepParameters" mixed="false">
+		<sequence minOccurs="1" maxOccurs="unbounded">
+			<any processContents="lax" namespace="##any"/>
+		</sequence>
+	</complexType>
+
+	<simpleType name="nonEmptyString">
+		<restriction base="string">
+			<minLength value="1"/>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="naturalInteger">
+		<restriction base="nonNegativeInteger">
+			<minInclusive value="1"/>
+			<maxInclusive value="2147483647"/> <!-- 2^31 - 1 -->
+		</restriction>
+	</simpleType>
+</schema>

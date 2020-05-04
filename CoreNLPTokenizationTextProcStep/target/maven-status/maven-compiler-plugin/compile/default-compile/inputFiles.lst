@@ -1,0 +1,8 @@
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPTokenizationTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlptokenization/entity/CoreNLPTokenizedTextDocument.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPTokenizationTextProcStep/src/main/java/module-info.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPTokenizationTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlptokenization/entity/CoreNLPTokenizedTextWithTitleDocument.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPTokenizationTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlptokenization/xml/definition/LanguageProcessingStepParameter.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPTokenizationTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlptokenization/xml/definition/package-info.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPTokenizationTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlptokenization/xml/definition/TokenizerOptionsProcessingStepParameter.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPTokenizationTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlptokenization/CoreNLPTokenizationProcessingStep.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPTokenizationTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlptokenization/CoreNLPTokenizationProcessingStepService.java

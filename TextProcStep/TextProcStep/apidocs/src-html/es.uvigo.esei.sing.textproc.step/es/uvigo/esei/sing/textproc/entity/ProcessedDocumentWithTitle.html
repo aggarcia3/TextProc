@@ -41,7 +41,7 @@
 <span class="sourceLineNo">029</span><a id="line.29">         * @param text  The processed text of the document, with tokens separated by</a>
 <span class="sourceLineNo">030</span><a id="line.30">         *              spaces.</a>
 <span class="sourceLineNo">031</span><a id="line.31">         * @param title The processed title of the text document.</a>
-<span class="sourceLineNo">032</span><a id="line.32">         * @throws java.lang.IllegalArgumentException If any parameter is {@code null}.</a>
+<span class="sourceLineNo">032</span><a id="line.32">         * @throws IllegalArgumentException If any parameter is {@code null}.</a>
 <span class="sourceLineNo">033</span><a id="line.33">         */</a>
 <span class="sourceLineNo">034</span><a id="line.34">        protected ProcessedDocumentWithTitle(final int id, final String text, @NonNull final String title) {</a>
 <span class="sourceLineNo">035</span><a id="line.35">                super(id, text);</a>
@@ -53,7 +53,7 @@
 <span class="sourceLineNo">041</span><a id="line.41">         * the rest of the entity attributes are to be be assigned later.</a>
 <span class="sourceLineNo">042</span><a id="line.42">         *</a>
 <span class="sourceLineNo">043</span><a id="line.43">         * @param id The primary key of the entity.</a>
-<span class="sourceLineNo">044</span><a id="line.44">         * @throws java.lang.IllegalArgumentException If {@code id} is {@code null}.</a>
+<span class="sourceLineNo">044</span><a id="line.44">         * @throws IllegalArgumentException If {@code id} is {@code null}.</a>
 <span class="sourceLineNo">045</span><a id="line.45">         */</a>
 <span class="sourceLineNo">046</span><a id="line.46">        protected ProcessedDocumentWithTitle(@NonNull final Integer id) {</a>
 <span class="sourceLineNo">047</span><a id="line.47">                super(id, "");</a>
@@ -67,17 +67,16 @@
 <span class="sourceLineNo">055</span><a id="line.55">                this.title = "";</a>
 <span class="sourceLineNo">056</span><a id="line.56">        }</a>
 <span class="sourceLineNo">057</span><a id="line.57"></a>
-<span class="sourceLineNo">058</span><a id="line.58">        /** {@inheritDoc} */</a>
-<span class="sourceLineNo">059</span><a id="line.59">        @Override</a>
-<span class="sourceLineNo">060</span><a id="line.60">        public String toString() {</a>
-<span class="sourceLineNo">061</span><a id="line.61">                final StringBuilder stringBuilder = new StringBuilder(super.toString());</a>
-<span class="sourceLineNo">062</span><a id="line.62"></a>
-<span class="sourceLineNo">063</span><a id="line.63">                stringBuilder</a>
-<span class="sourceLineNo">064</span><a id="line.64">                        .append('\n').append("Title: ").append(title);</a>
-<span class="sourceLineNo">065</span><a id="line.65"></a>
-<span class="sourceLineNo">066</span><a id="line.66">                return stringBuilder.toString();</a>
-<span class="sourceLineNo">067</span><a id="line.67">        }</a>
-<span class="sourceLineNo">068</span><a id="line.68">}</a>
+<span class="sourceLineNo">058</span><a id="line.58">        @Override</a>
+<span class="sourceLineNo">059</span><a id="line.59">        public String toString() {</a>
+<span class="sourceLineNo">060</span><a id="line.60">                final StringBuilder stringBuilder = new StringBuilder(super.toString());</a>
+<span class="sourceLineNo">061</span><a id="line.61"></a>
+<span class="sourceLineNo">062</span><a id="line.62">                stringBuilder</a>
+<span class="sourceLineNo">063</span><a id="line.63">                        .append('\n').append("Title: ").append(title);</a>
+<span class="sourceLineNo">064</span><a id="line.64"></a>
+<span class="sourceLineNo">065</span><a id="line.65">                return stringBuilder.toString();</a>
+<span class="sourceLineNo">066</span><a id="line.66">        }</a>
+<span class="sourceLineNo">067</span><a id="line.67">}</a>
 
 
 

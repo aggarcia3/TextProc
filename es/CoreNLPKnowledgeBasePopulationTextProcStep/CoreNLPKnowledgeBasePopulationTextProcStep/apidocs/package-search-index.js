@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"m":"es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation","l":"es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation"},{"m":"es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation","l":"es.uvigo.esei.sing.textproc.step.corenlpknowledgebasepopulation.xml.definition"}]

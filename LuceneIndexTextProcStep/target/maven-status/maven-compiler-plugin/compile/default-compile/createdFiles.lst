@@ -1,0 +1,5 @@
+es/uvigo/esei/sing/textproc/step/luceneindex/xml/definition/package-info.class
+module-info.class
+es/uvigo/esei/sing/textproc/step/luceneindex/LuceneIndexProcessingStepService.class
+es/uvigo/esei/sing/textproc/step/luceneindex/LuceneIndexProcessingStep.class
+es/uvigo/esei/sing/textproc/step/luceneindex/xml/definition/FolderPathProcessingStepParameter.class

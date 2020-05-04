@@ -1,0 +1,7 @@
+module-info.class
+es/uvigo/esei/sing/textproc/step/mentionfiltering/MentionFilteringProcessingStep.class
+es/uvigo/esei/sing/textproc/step/mentionfiltering/entity/MentionFilteredTextDocument.class
+es/uvigo/esei/sing/textproc/step/mentionfiltering/MentionFilteringProcessingStepService.class
+es/uvigo/esei/sing/textproc/step/mentionfiltering/xml/definition/MentionTypeProcessingStepParameter.class
+es/uvigo/esei/sing/textproc/step/mentionfiltering/xml/definition/package-info.class
+es/uvigo/esei/sing/textproc/step/mentionfiltering/entity/MentionFilteredTextWithTitleDocument.class

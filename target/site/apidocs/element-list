@@ -1,0 +1,14 @@
+module:es.uvigo.esei.sing.textproc.abstracttppstep
+es.uvigo.esei.sing.textproc.abstracttppstep
+module:es.uvigo.esei.sing.textproc.logging
+es.uvigo.esei.sing.textproc.logging
+module:es.uvigo.esei.sing.textproc.main
+es.uvigo.esei.sing.textproc
+module:es.uvigo.esei.sing.textproc.persistence
+es.uvigo.esei.sing.textproc.persistence
+module:es.uvigo.esei.sing.textproc.step
+es.uvigo.esei.sing.textproc.entity
+es.uvigo.esei.sing.textproc.process
+es.uvigo.esei.sing.textproc.step
+es.uvigo.esei.sing.textproc.step.util
+es.uvigo.esei.sing.textproc.step.xml.definition

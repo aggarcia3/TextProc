@@ -27,7 +27,7 @@
 <span class="sourceLineNo">015</span><a id="line.15"> * Represents the common contract to all processed documents</a>
 <span class="sourceLineNo">016</span><a id="line.16"> * &lt;p&gt;</a>
 <span class="sourceLineNo">017</span><a id="line.17"> * Non-abstract subclasses of this class must define a public constructor with a</a>
-<span class="sourceLineNo">018</span><a id="line.18"> * single {@link java.lang.Integer} parameter (the primitive type is not allowed), which</a>
+<span class="sourceLineNo">018</span><a id="line.18"> * single {@link Integer} parameter (the primitive type is not allowed), which</a>
 <span class="sourceLineNo">019</span><a id="line.19"> * is the primary key of the entity, that must initialize any other field to</a>
 <span class="sourceLineNo">020</span><a id="line.20"> * dummy values.</a>
 <span class="sourceLineNo">021</span><a id="line.21"> * &lt;p&gt;</a>
@@ -52,18 +52,17 @@
 <span class="sourceLineNo">040</span><a id="line.40">                this.text = "";</a>
 <span class="sourceLineNo">041</span><a id="line.41">        }</a>
 <span class="sourceLineNo">042</span><a id="line.42"></a>
-<span class="sourceLineNo">043</span><a id="line.43">        /** {@inheritDoc} */</a>
-<span class="sourceLineNo">044</span><a id="line.44">        @Override</a>
-<span class="sourceLineNo">045</span><a id="line.45">        public String toString() {</a>
-<span class="sourceLineNo">046</span><a id="line.46">                final StringBuilder stringBuilder = new StringBuilder("- ");</a>
-<span class="sourceLineNo">047</span><a id="line.47"></a>
-<span class="sourceLineNo">048</span><a id="line.48">                stringBuilder.append(getClass().getSimpleName())</a>
-<span class="sourceLineNo">049</span><a id="line.49">                        .append('\n').append("ID: ").append(id)</a>
-<span class="sourceLineNo">050</span><a id="line.50">                        .append('\n').append("Text: ").append(text);</a>
-<span class="sourceLineNo">051</span><a id="line.51"></a>
-<span class="sourceLineNo">052</span><a id="line.52">                return stringBuilder.toString();</a>
-<span class="sourceLineNo">053</span><a id="line.53">        }</a>
-<span class="sourceLineNo">054</span><a id="line.54">}</a>
+<span class="sourceLineNo">043</span><a id="line.43">        @Override</a>
+<span class="sourceLineNo">044</span><a id="line.44">        public String toString() {</a>
+<span class="sourceLineNo">045</span><a id="line.45">                final StringBuilder stringBuilder = new StringBuilder("- ");</a>
+<span class="sourceLineNo">046</span><a id="line.46"></a>
+<span class="sourceLineNo">047</span><a id="line.47">                stringBuilder.append(getClass().getSimpleName())</a>
+<span class="sourceLineNo">048</span><a id="line.48">                        .append('\n').append("ID: ").append(id)</a>
+<span class="sourceLineNo">049</span><a id="line.49">                        .append('\n').append("Text: ").append(text);</a>
+<span class="sourceLineNo">050</span><a id="line.50"></a>
+<span class="sourceLineNo">051</span><a id="line.51">                return stringBuilder.toString();</a>
+<span class="sourceLineNo">052</span><a id="line.52">        }</a>
+<span class="sourceLineNo">053</span><a id="line.53">}</a>
 
 
 

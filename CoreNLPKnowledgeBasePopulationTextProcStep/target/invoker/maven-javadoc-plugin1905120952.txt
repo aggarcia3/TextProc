@@ -1,0 +1,25 @@
+Invoking Maven for the goals: [org.apache.maven.plugins:maven-javadoc-plugin:3.2.0:javadoc] with no properties
+
+M2_HOME=/usr/share/maven
+MAVEN_OPTS=null
+JAVA_HOME=/usr/lib/jvm/java-14-openjdk-amd64
+JAVA_OPTS=null
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< es.uvigo.esei.sing:ejml-shaded >-------------------
+[INFO] Building EJML (uber JAR) 0.38-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> maven-javadoc-plugin:3.2.0:javadoc (default-cli) > generate-sources @ ejml-shaded >>>
+[INFO] 
+[INFO] <<< maven-javadoc-plugin:3.2.0:javadoc (default-cli) < generate-sources @ ejml-shaded <<<
+[INFO] 
+[INFO] 
+[INFO] --- maven-javadoc-plugin:3.2.0:javadoc (default-cli) @ ejml-shaded ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.539 s
+[INFO] Finished at: 2020-05-04T22:12:24+02:00
+[INFO] ------------------------------------------------------------------------

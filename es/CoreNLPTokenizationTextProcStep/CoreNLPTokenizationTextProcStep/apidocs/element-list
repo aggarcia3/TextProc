@@ -1,0 +1,4 @@
+module:es.uvigo.esei.sing.textproc.step.corenlptokenization
+es.uvigo.esei.sing.textproc.step.corenlptokenization
+es.uvigo.esei.sing.textproc.step.corenlptokenization.entity
+es.uvigo.esei.sing.textproc.step.corenlptokenization.xml.definition

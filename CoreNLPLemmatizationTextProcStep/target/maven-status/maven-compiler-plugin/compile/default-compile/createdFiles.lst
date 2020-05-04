@@ -1,0 +1,7 @@
+es/uvigo/esei/sing/textproc/step/corenlplemmatization/xml/definition/package-info.class
+es/uvigo/esei/sing/textproc/step/corenlplemmatization/entity/CoreNLPLemmatizedTextDocument.class
+module-info.class
+es/uvigo/esei/sing/textproc/step/corenlplemmatization/CoreNLPLemmatizationProcessingStepService.class
+es/uvigo/esei/sing/textproc/step/corenlplemmatization/entity/CoreNLPLemmatizedTextWithTitleDocument.class
+es/uvigo/esei/sing/textproc/step/corenlplemmatization/xml/definition/ModelProcessingStepParameter.class
+es/uvigo/esei/sing/textproc/step/corenlplemmatization/CoreNLPLemmatizationProcessingStep.class

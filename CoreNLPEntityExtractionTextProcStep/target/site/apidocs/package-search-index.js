@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"m":"es.uvigo.esei.sing.textproc.step.corenlpentityextraction","l":"es.uvigo.esei.sing.textproc.step.corenlpentityextraction"},{"m":"es.uvigo.esei.sing.textproc.step.corenlpentityextraction","l":"es.uvigo.esei.sing.textproc.step.corenlpentityextraction.xml.definition"}]

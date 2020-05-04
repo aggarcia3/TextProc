@@ -1,0 +1,5 @@
+es/uvigo/esei/sing/textproc/persistence/TextProcPersistence.class
+es/uvigo/esei/sing/textproc/persistence/TimestampedEntityTransaction.class
+es/uvigo/esei/sing/textproc/persistence/EntityManagerTransactionDecorator.class
+es/uvigo/esei/sing/textproc/persistence/TextProcPersistence$TextProcPersistenceInstanceHolder.class
+module-info.class

@@ -1,0 +1,6 @@
+module:es.uvigo.esei.sing.textproc.step
+es.uvigo.esei.sing.textproc.entity
+es.uvigo.esei.sing.textproc.process
+es.uvigo.esei.sing.textproc.step
+es.uvigo.esei.sing.textproc.step.util
+es.uvigo.esei.sing.textproc.step.xml.definition

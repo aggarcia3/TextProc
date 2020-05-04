@@ -1,0 +1,4 @@
+--patch-module
+es.uvigo.esei.sing.textproc.persistence=_
+--add-reads
+es.uvigo.esei.sing.textproc.persistence=ALL-UNNAMED

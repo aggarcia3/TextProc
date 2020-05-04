@@ -1,0 +1,66 @@
+/usr/lib/jvm/java-14-openjdk-amd64/bin/javadoc
+@options
+@argfile
+--class-path
+'/home/alejandro/.m2/repository/org/glassfish/jaxb/jaxb-runtime/2.4.0-b180830.0438/jaxb-runtime-2.4.0-b180830.0438.jar:/home/alejandro/.m2/repository/org/glassfish/jaxb/txw2/2.4.0-b180830.0438/txw2-2.4.0-b180830.0438.jar:/home/alejandro/.m2/repository/com/sun/istack/istack-commons-runtime/3.0.7/istack-commons-runtime-3.0.7.jar:/home/alejandro/.m2/repository/org/jvnet/staxex/stax-ex/1.8/stax-ex-1.8.jar:/home/alejandro/.m2/repository/com/sun/xml/fastinfoset/FastInfoset/1.2.15/FastInfoset-1.2.15.jar:/home/alejandro/.m2/repository/org/jline/jline/3.13.3/jline-3.13.3.jar:/home/alejandro/.m2/repository/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar:/home/alejandro/.m2/repository/org/javassist/javassist/3.24.0-GA/javassist-3.24.0-GA.jar:/home/alejandro/.m2/repository/net/bytebuddy/byte-buddy/1.10.7/byte-buddy-1.10.7.jar:/home/alejandro/.m2/repository/antlr/antlr/2.7.7/antlr-2.7.7.jar:/home/alejandro/.m2/repository/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.1.1.Final/jboss-transaction-api_1.2_spec-1.1.1.Final.jar:/home/alejandro/.m2/repository/org/jboss/jandex/2.1.1.Final/jandex-2.1.1.Final.jar:/home/alejandro/.m2/repository/com/fasterxml/classmate/1.5.1/classmate-1.5.1.jar:/home/alejandro/.m2/repository/org/dom4j/dom4j/2.1.1/dom4j-2.1.1.jar:/home/alejandro/.m2/repository/org/hibernate/common/hibernate-commons-annotations/5.1.0.Final/hibernate-commons-annotations-5.1.0.Final.jar:/home/alejandro/.m2/repository/org/hibernate/hibernate-c3p0/5.4.12.Final/hibernate-c3p0-5.4.12.Final.jar:/home/alejandro/.m2/repository/com/mchange/c3p0/0.9.5.3/c3p0-0.9.5.3.jar:/home/alejandro/.m2/repository/com/mchange/mchange-commons-java/0.2.15/mchange-commons-java-0.2.15.jar:/home/alejandro/.m2/repository/org/xerial/sqlite-jdbc/3.30.1/sqlite-jdbc-3.30.1.jar:/home/alejandro/.m2/repository/com/github/gwenn/sqlite-dialect/c3cee1f223/sqlite-dialect-c3cee1f223.jar:/home/alejandro/.m2/repository/com/apple/AppleJavaExtensions/1.4/AppleJavaExtensions-1.4.jar:/home/alejandro/.m2/repository/de/jollyday/jollyday/0.4.9/jollyday-0.4.9.jar:/home/alejandro/.m2/repository/org/apache/commons/commons-lang3/3.3.1/commons-lang3-3.3.1.jar:/home/alejandro/.m2/repository/org/apache/lucene/lucene-queryparser/7.5.0/lucene-queryparser-7.5.0.jar:/home/alejandro/.m2/repository/org/apache/lucene/lucene-queries/7.5.0/lucene-queries-7.5.0.jar:/home/alejandro/.m2/repository/org/apache/lucene/lucene-sandbox/7.5.0/lucene-sandbox-7.5.0.jar:/home/alejandro/.m2/repository/org/apache/lucene/lucene-analyzers-common/7.5.0/lucene-analyzers-common-7.5.0.jar:/home/alejandro/.m2/repository/org/apache/lucene/lucene-core/7.5.0/lucene-core-7.5.0.jar:/home/alejandro/.m2/repository/javax/servlet/javax.servlet-api/3.0.1/javax.servlet-api-3.0.1.jar:/home/alejandro/.m2/repository/xom/xom/1.3.2/xom-1.3.2.jar:/home/alejandro/.m2/repository/xerces/xercesImpl/2.8.0/xercesImpl-2.8.0.jar:/home/alejandro/.m2/repository/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar:/home/alejandro/.m2/repository/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar:/home/alejandro/.m2/repository/com/google/protobuf/protobuf-java/3.9.2/protobuf-java-3.9.2.jar:/home/alejandro/.m2/repository/org/mapstruct/mapstruct-processor/1.3.1.Final/mapstruct-processor-1.3.1.Final.jar:/home/alejandro/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0-M1/junit-jupiter-api-5.7.0-M1.jar:/home/alejandro/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/alejandro/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/alejandro/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0-M1/junit-platform-commons-1.7.0-M1.jar'
+--module-path
+'/home/alejandro/.m2/repository/org/hibernate/hibernate-core/5.4.12.Final/hibernate-core-5.4.12.Final.jar:/home/alejandro/.m2/repository/me/tongfei/progressbar/0.8.1/progressbar-0.8.1.jar:/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/../../dist/lib/CoreNLPEntityExtractionTextProcStep-1.0.0-SNAPSHOT.jar:/home/alejandro/.m2/repository/javax/persistence/javax.persistence-api/2.2/javax.persistence-api-2.2.jar:/home/alejandro/.m2/repository/es/uvigo/esei/sing/stanford-corenlp/4.0.0-CUSTOM/stanford-corenlp-4.0.0-CUSTOM.jar:/home/alejandro/.m2/repository/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar:/home/alejandro/.m2/repository/javax/xml/bind/jaxb-api/2.4.0-b180830.0359/jaxb-api-2.4.0-b180830.0359.jar:/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcLogging/target/TextProcLogging-1.0.0-SNAPSHOT.jar:/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcPersistence/target/TextProcPersistence-1.0.0-SNAPSHOT.jar:/home/alejandro/.m2/repository/org/apache/commons/commons-csv/1.8/commons-csv-1.8.jar:/home/alejandro/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar:/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcStep/target/TextProcStep-1.0.0-SNAPSHOT.jar'
+--patch-module
+es.uvigo.esei.sing.textproc.step.corenlpentityextraction='/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java:/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/generated-sources/annotations'
+-encoding
+'UTF-8'
+-package
+-quiet
+--module-source-path
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/src'
+-author
+-bottom
+'Copyleft 🄯 Alejandro González García'
+-charset
+'UTF-8'
+-d
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'CoreNLPEntityExtractionTextProcStep 1.0.0-SNAPSHOT API'
+-link
+'https://commons.apache.org/proper/commons-csv/apidocs'
+-linkoffline
+'https://aggarcia3.github.io/TextProc/TextProcStep/apidocs' '/media/discoduro/Documentos/Estudios/TFG/TextProc/TextProcStep/target/site/es/apidocs'
+-linksource
+-use
+-version
+-windowtitle
+'CoreNLPEntityExtractionTextProcStep 1.0.0-SNAPSHOT API'
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/CoreNLPEntityExtractionProcessingStep.java'
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/CoreNLPEntityExtractionProcessingStepService.java'
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NamedEntityDictionaryHelper.java'
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NERMappingsFileWriter.java'
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/NERMappingsFileStepParameter.java'
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/OverwritableNERCategoriesStepParameter.java'
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/package-info.java'
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/PropertiesFileProcessingStepParameter.java'
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/SeedWordsDirectoryProcessingStepParameter.java'
+'/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/module-info.java'
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/allclasses-index.html = 1588623122997
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/allpackages-index.html = 1588623123001
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/constant-values.html = 1588623122801
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/deprecated-list.html = 1588623122950
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/element-list = 1588623122723
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/help-doc.html = 1588623123012
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/index-all.html = 1588623122987
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/index.html = 1588623123006
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/member-search-index.js = 1588623122983
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/member-search-index.zip = 1588623122984
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/module-search-index.js = 1588623122977
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/module-search-index.zip = 1588623122979
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/overview-tree.html = 1588623122942
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/package-search-index.js = 1588623122980
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/package-search-index.zip = 1588623122981
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/script.js = 1588623123016
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/search.js = 1588623123018
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/stylesheet.css = 1588623123014
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/system-properties.html = 1588623123004
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/type-search-index.js = 1588623122982
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/target/site/es/apidocs/type-search-index.zip = 1588623122983

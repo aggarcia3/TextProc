@@ -1,0 +1,7 @@
+es/uvigo/esei/sing/textproc/step/emptyfiltering/xml/definition/IncludeRedditDeletedProcessingStepParameter.class
+module-info.class
+es/uvigo/esei/sing/textproc/step/emptyfiltering/entity/NonEmptyTextWithTitleDocument.class
+es/uvigo/esei/sing/textproc/step/emptyfiltering/EmptyFilteringProcessingStep.class
+es/uvigo/esei/sing/textproc/step/emptyfiltering/EmptyFilteringProcessingStepService.class
+es/uvigo/esei/sing/textproc/step/emptyfiltering/entity/NonEmptyTextDocument.class
+es/uvigo/esei/sing/textproc/step/emptyfiltering/xml/definition/package-info.class

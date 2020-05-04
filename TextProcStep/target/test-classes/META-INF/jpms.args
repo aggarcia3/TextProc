@@ -1,0 +1,4 @@
+--patch-module
+es.uvigo.esei.sing.textproc.step=_
+--add-reads
+es.uvigo.esei.sing.textproc.step=ALL-UNNAMED

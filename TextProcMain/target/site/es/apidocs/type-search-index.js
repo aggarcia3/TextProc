@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"es.uvigo.esei.sing.textproc","l":"TextProc"}]

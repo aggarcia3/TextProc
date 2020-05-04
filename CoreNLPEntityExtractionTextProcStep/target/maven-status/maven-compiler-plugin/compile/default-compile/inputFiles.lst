@@ -1,0 +1,10 @@
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/CoreNLPEntityExtractionProcessingStepService.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/PropertiesFileProcessingStepParameter.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NamedEntityDictionaryHelper.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/package-info.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/NERMappingsFileStepParameter.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/module-info.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/CoreNLPEntityExtractionProcessingStep.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/SeedWordsDirectoryProcessingStepParameter.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/NERMappingsFileWriter.java
+/media/discoduro/Documentos/Estudios/TFG/TextProc/CoreNLPEntityExtractionTextProcStep/src/main/java/es/uvigo/esei/sing/textproc/step/corenlpentityextraction/xml/definition/OverwritableNERCategoriesStepParameter.java

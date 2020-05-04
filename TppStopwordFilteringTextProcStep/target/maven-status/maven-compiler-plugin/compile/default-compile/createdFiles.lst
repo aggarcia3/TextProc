@@ -1,0 +1,9 @@
+es/uvigo/esei/sing/textproc/step/tppstopwordfiltering/TppStopwordFilteringProcessingStep$AddLanguageParameterAction.class
+module-info.class
+es/uvigo/esei/sing/textproc/step/tppstopwordfiltering/TppStopwordFilteringProcessingStep.class
+es/uvigo/esei/sing/textproc/step/tppstopwordfiltering/xml/definition/package-info.class
+es/uvigo/esei/sing/textproc/step/tppstopwordfiltering/xml/definition/LanguageProcessingStepParameter.class
+es/uvigo/esei/sing/textproc/step/tppstopwordfiltering/entity/StopwordFilteredTextDocument.class
+es/uvigo/esei/sing/textproc/step/tppstopwordfiltering/entity/StopwordFilteredTextWithTitleDocument.class
+es/uvigo/esei/sing/textproc/step/tppstopwordfiltering/TppStopwordFilteringProcessingStepService.class
+es/uvigo/esei/sing/textproc/step/tppstopwordfiltering/TppStopwordFilteringProcessingStep$FilteredAttributeStoreAction.class
