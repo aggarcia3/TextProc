@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -101,7 +102,7 @@ final class LuceneIndexProcessingStep extends AbstractProcessingStep {
 								// Add the text attributes of the document as fields
 								for (int j = 0; j < unprocessedAttributeNames.length; ++j) {
 									documentFields.add(
-										new Field(unprocessedAttributeNames[0], documentAttributes[j + 1], fieldType)
+										new Field(unprocessedAttributeNames[0], documentAttributes[j + 1].toLowerCase(Locale.ROOT), fieldType)
 									);
 								}
 
