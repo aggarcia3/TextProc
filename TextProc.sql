@@ -1,10 +1,12 @@
 -- ----------------------------------------- --
---	Example DDL statements for TextProc  --
+--	  Example DDL statements for TextProc    --
 -- Tweak as needed for your domain and RDBMS --
 -- ----------------------------------------- --
 BEGIN TRANSACTION;
 
 -- DROP objects created by this script
+DROP VIEW IF EXISTS text_document;
+DROP VIEW IF EXISTS text_document_with_title;
 DROP VIEW IF EXISTS tokenized_submission;
 DROP VIEW IF EXISTS tokenized_comment;
 DROP VIEW IF EXISTS stopword_filtered_submission;
@@ -93,8 +95,11 @@ CREATE TABLE non_empty_text_document (
 	FOREIGN KEY (id) REFERENCES comment(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
--- CREATE views to provide more semantic names
--- to JPA entity tables (optional)
+-- CREATE views to provide more generic names
+-- to particular entities, useful for JPA.
+-- Also create views to provide more specific names
+CREATE VIEW text_document AS SELECT id, text FROM comment;
+CREATE VIEW text_document_with_title AS SELECT id, title, text FROM submission;
 CREATE VIEW tokenized_submission AS SELECT * FROM tokenized_text_with_title_document;
 CREATE VIEW tokenized_comment AS SELECT * FROM tokenized_text_document;
 CREATE VIEW stopword_filtered_submission AS SELECT * FROM stopword_filtered_text_with_title_document;
