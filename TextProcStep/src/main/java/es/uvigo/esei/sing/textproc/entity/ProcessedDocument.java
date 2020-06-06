@@ -12,7 +12,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 /**
- * Represents the common contract to all processed documents
+ * Represents the common contract to all processed documents.
  * <p>
  * Non-abstract subclasses of this class must define a public constructor with a
  * single {@link Integer} parameter (the primitive type is not allowed), which
