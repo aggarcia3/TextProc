@@ -19,7 +19,7 @@
 		<textproc.hibernate.jpa.pu>${project.artifactId}</textproc.hibernate.jpa.pu>
 		<textproc.hibernate.jpa.provider>org.hibernate.jpa.HibernatePersistenceProvider</textproc.hibernate.jpa.provider>
 		<textproc.hibernate.jpa.driver_class>org.sqlite.JDBC</textproc.hibernate.jpa.driver_class>
-		<textproc.hibernate.jpa.connection.url>jdbc:sqlite:corpus.db</textproc.hibernate.jpa.connection.url>
+		<textproc.hibernate.jpa.connection.url>jdbc:sqlite:../DB/corpus.db</textproc.hibernate.jpa.connection.url>
 		<textproc.hibernate.jpa.connection.username></textproc.hibernate.jpa.connection.username>
 		<textproc.hibernate.jpa.connection.password></textproc.hibernate.jpa.connection.password>
 	</properties>

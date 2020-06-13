@@ -23,15 +23,15 @@
 		</parameters>
 	</step>
 
-	<!-- Filtering stopwords improves performance for entity extraction and KBP -->
-	<step action="TppStopwordFiltering">
+	<!-- Filtering stopwords improves performance for entity extraction and KBP. It's not entirely necessary, though -->
+	<!--<step action="TppStopwordFiltering">
 		<parameters>
 			<tpp:endpoint>http://127.0.0.1:5005/tpp/v1/remove-stopwords</tpp:endpoint>
 			<textDocumentWithTitleTableName>tokenized_submission</textDocumentWithTitleTableName>
 			<textDocumentTableName>tokenized_comment</textDocumentTableName>
 			<tppsf:language>english</tppsf:language>
 		</parameters>
-	</step>
+	</step>-->
 
 	<step action="MentionFiltering">
 		<parameters>
@@ -72,7 +72,8 @@
 			<!-- Decrease this for less RAM usage and more accurate progress information -->
 			<documentsPerBatch>64</documentsPerBatch>
 			<cnlpkbp:nerMappingsFile>entityextraction/entities.tsv</cnlpkbp:nerMappingsFile>
-			<cnlpkbp:baseModelURI>vacbot-kb:/</cnlpkbp:baseModelURI>
+			<cnlpkbp:baseModelURI>vacbotkb:/</cnlpkbp:baseModelURI>
+			<cnlpkbp:jenaDatasetFolder>../DB/knowledge_base</cnlpkbp:jenaDatasetFolder>
 		</parameters>
 	</step>
 
@@ -105,6 +106,7 @@
 			<textDocumentTableName>non_empty_comment</textDocumentTableName>
 			<!-- A large value. It doesn't really matter -->
 			<pageSize>2147483647</pageSize>
+			<li:folderPath>../DB/lucene_index</li:folderPath>
 		</parameters>
 	</step>
 </process>
